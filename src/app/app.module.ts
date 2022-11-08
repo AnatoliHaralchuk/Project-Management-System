@@ -9,7 +9,9 @@ import { ProjectManagementModule } from './project-management/project-management
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
