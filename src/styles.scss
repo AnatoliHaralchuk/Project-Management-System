@@ -1,3 +1,5 @@
+@import './assets/styles/constants.scss';
+
 /* You can add global styles to this file, and also import other style files */
 
 html,
@@ -81,6 +83,17 @@ textarea,
 select {
   font: inherit;
 }
+
+/* Кастомный скролл */
+::-webkit-scrollbar{
+  width: 8px;
+  background: $gold;
+}
+
+::-webkit-scrollbar-thumb{
+  background: $bronze;
+}
+
 
 /* Удаляем все анимации и переходы для людей, которые предпочитают их не использовать */
 @media (prefers-reduced-motion: reduce) {
