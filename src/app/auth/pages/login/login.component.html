@@ -1,1 +1,67 @@
-<p>login works!</p>
+<div class="login-container">
+  <form class="login-body" [formGroup]="form">
+    <h2 class="login-title">Log in</h2>
+    <mat-form-field class="login-field" appearance="fill">
+      <mat-label>Log in</mat-label>
+      <input matInput formControlName="login" autocomplete="off" />
+      <mat-error *ngIf="form.get('login')?.touched && form.get('login')?.invalid">
+        <small *ngIf="(form.get('login')?.errors)!['required']">Please enter a login</small>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="password-field" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input
+        readonly
+        onfocus="removeAttribute('readonly')"
+        matInput
+        formControlName="password"
+        [type]="hidePass ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hidePass = !hidePass"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidePass"
+      >
+        <mat-icon>{{ hidePass ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+        <small *ngIf="(form.get('password')?.errors)!['required']">Please enter a password</small>
+        <small
+          *ngIf="
+            (form.get('password')?.errors)!['minlength'] &&
+            !(form.get('password')?.errors)!['required']
+          "
+          >Your password isn't strong enough: at least 8 characters</small
+        >
+        <small
+          *ngIf="
+            (form.get('password')?.errors)!['mixtureCase'] &&
+            !(form.get('password')?.errors)!['required']
+          "
+          >Your password isn't strong enough:a mixture of both uppercase and lowercase
+          letters</small
+        >
+        <small *ngIf="(form.get('password')?.errors)!['mixtureNum']"
+          >Your password isn't strong enough: a mixture of letters and numbers</small
+        >
+        <small *ngIf="(form.get('password')?.errors)!['inclusionSymbol']"
+          >Your password isn't strong enough: inclusion of at least one special character, e.g., ! @
+          # ?</small
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      class="login-btn"
+      type="submit"
+      [disabled]="form.invalid"
+      mat-stroked-button
+      color="primary"
+    >
+      Login
+    </button>
+  </form>
+</div>
