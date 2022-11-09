@@ -1,5 +1,5 @@
 module.exports = {
-  trailingComma: "all",
+  trailingComma: 'all',
   tabWidth: 2,
   semi: true,
   singleQuote: true,
@@ -7,10 +7,14 @@ module.exports = {
   printWidth: 100,
   overrides: [
     {
-      files: "*.html",
+      files: '*.html',
       options: {
-        parser: "angular"
-      }
-    }
-  ]
+        parser: 'angular',
+      },
+    },
+  ],
+  plugins: [
+    // relative paths are usually required so Prettier can find the plugin
+    './node_modules/prettier-plugin-multiline-arrays', // plugin added here
+  ],
 };
