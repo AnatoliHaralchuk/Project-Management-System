@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModelHttpService } from "./project-management/model-http/model-http.service";
+import { ModelHttpService } from './project-management/model-http/model-http.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +7,11 @@ import { ModelHttpService } from "./project-management/model-http/model-http.ser
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private model: ModelHttpService) {
-  }
+  constructor(private model: ModelHttpService) {}
+
   ngOnInit(): void {
     // this.model.getAllUsers().subscribe(res => console.log('users', res))
   }
+
   title = 'Project-Management-System';
 }
