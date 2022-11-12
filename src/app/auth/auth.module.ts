@@ -23,7 +23,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoginComponent, SignUpComponent, AuthLayoutComponent],
+  declarations: [
+    LoginComponent,
+    SignUpComponent,
+    AuthLayoutComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

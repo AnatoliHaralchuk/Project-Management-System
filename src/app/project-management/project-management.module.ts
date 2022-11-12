@@ -4,7 +4,10 @@ import { WelcomePageComponent } from './pages/welcome-page/welcome-page.componen
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
 @NgModule({
-  declarations: [WelcomePageComponent, MainPageComponent],
+  declarations: [
+    WelcomePageComponent,
+    MainPageComponent,
+  ],
   imports: [CommonModule],
 })
 export class ProjectManagementModule {}
