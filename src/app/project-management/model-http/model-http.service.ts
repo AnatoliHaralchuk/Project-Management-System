@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, EMPTY, Observable } from 'rxjs';
 import { Login, Token, User } from '../../auth/models/auth.models';
-import { Board, BoardColumns } from '../models/management.models';
+import { Board, BoardColumns, BoardTasks, Task } from '../models/management.models';
 
 @Injectable({
   providedIn: 'root',
@@ -134,7 +134,7 @@ export class ModelHttpService {
 
   createColumn(boardId: string, title: string): Observable<BoardColumns> {
     return this.http
-      .post<BoardColumns>('boards', {
+      .post<BoardColumns>(`boards/${boardId}/columns`, {
         title: title,
       })
       .pipe(
@@ -168,6 +168,72 @@ export class ModelHttpService {
       .put<BoardColumns>(`boards/${boardId}/columns/${columnId}`, {
         title: column.title,
         order: column.order,
+      })
+      .pipe(
+        catchError((err) => {
+          if (err.status === 404) console.log('что-то делаем если boards не найден');
+          return EMPTY;
+        }),
+      );
+  }
+
+  // START TASKS//////////////////////////////////////////////////
+  getAllTasks(boardId: string, columnId: string): Observable<Array<BoardTasks>> {
+    return this.http.get<Array<BoardTasks>>(`boards/${boardId}/columns/${columnId}/tasks`).pipe(
+      catchError((err) => {
+        if (err.status === 404) console.log('что-то делаем');
+        return EMPTY;
+      }),
+    );
+  }
+
+  createTask(boardId: string, columnId: string, task: Task): Observable<BoardTasks> {
+    return this.http
+      .post<BoardTasks>(`boards/${boardId}/columns/${columnId}/tasks`, {
+        title: task.title,
+        description: task.description,
+        userId: task.userId,
+      })
+      .pipe(
+        catchError((err) => {
+          if (err.status === 404) console.log('что-то делаем в случае ошибки');
+          return EMPTY;
+        }),
+      );
+  }
+
+  getTaskById(boardId: string, columnId: string, taskId: string): Observable<BoardTasks> {
+    return this.http.get<BoardTasks>(`boards/${boardId}/columns/${columnId}/tasks/${taskId}`).pipe(
+      catchError((err) => {
+        if (err.status === 404) console.log('что-то делаем в случае ошибки');
+        return EMPTY;
+      }),
+    );
+  }
+
+  deleteTask(boardId: string, columnId: string, taskId: string): Observable<void> {
+    return this.http.delete<void>(`boards/${boardId}/columns/${columnId}/tasks/${taskId}`).pipe(
+      catchError((err) => {
+        if (err.status === 404) console.log('что-то делаем в случае ошибки');
+        return EMPTY;
+      }),
+    );
+  }
+
+  updateTask(
+    boardId: string,
+    columnId: string,
+    taskId: string,
+    task: BoardTasks,
+  ): Observable<BoardTasks> {
+    return this.http
+      .put<BoardTasks>(`boards/${boardId}/columns/${columnId}/tasks/${taskId}`, {
+        title: task.title,
+        order: task.order,
+        description: task.description,
+        userId: task.userId,
+        boardId: task.boardId,
+        columnId: task.columnId,
       })
       .pipe(
         catchError((err) => {

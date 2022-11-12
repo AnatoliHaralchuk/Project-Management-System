@@ -14,13 +14,20 @@ export interface BoardColumns {
 export interface BoardTasks {
   id?: string;
   title: string;
-  order: number;
+  order?: number;
   done?: boolean;
   description: string;
   userId: string;
-  files: Array<BoardFiles>;
+  boardId?: string;
+  columnId?: string;
+  files?: Array<BoardFiles>;
 }
 
+export interface Task {
+  title: string;
+  description: string;
+  userId: string;
+}
 export interface BoardFiles {
   filename: string;
   fileSize: number;
