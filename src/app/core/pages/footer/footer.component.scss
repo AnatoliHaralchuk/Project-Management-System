@@ -12,16 +12,40 @@
         align-items: center;
         padding: 0 100px;
         position: relative;
+        @media (max-width: 1020px) {
+            padding: 0 50px;
+        }
+        @media (max-width: 767.9px) {
+            padding: 0 20px;
+        }
+        @media (max-width: 399.9px) {
+            padding: 0 10px;
+        }
         .footer__meta {
             display: flex;
             align-items: center;
             gap: 10px;
             @include font(22px, $white);
+            @media (max-width: 1020px) {
+                gap: 7px;
+                @include font(20px, $white);
+            }
+            @media (max-width: 767.9px) {
+                gap: 5px;
+                @include font(18px, $white);
+            }
+            @media (max-width: 519.9px) {
+                gap: 3px;
+                @include font(16px, $white);
+            }
             .footer__meta-text {
                 text-shadow: none;
             }
             .year {
                 font-size: 18px;
+                @media (max-width: 519.9px) {
+                    font-size: 16px;
+                }
             }
         }
         .footer__logo {
@@ -34,6 +58,18 @@
             .footer__logo-img {
                 max-height: 60px;
                 height: 100%;
+                @media (max-width: 1020px) {
+                    max-height: 50px;
+                }
+                @media (max-width: 767.9px) {
+                    max-height: 40px;
+                }
+                @media (max-width: 519.9px) {
+                    max-height: 25px;
+                }
+                @media (max-width: 399.9px) {
+                    max-height: 22px;
+                }
             }
         }
         .footer__team {
@@ -47,6 +83,15 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
+            @media (max-width: 1020px) {
+                gap: 15px;
+            }
+            @media (max-width: 767.9px) {
+                gap: 10px;
+            }
+            @media (max-width: 399.9px) {
+                gap: 5px;
+            }
             .footer__team-btn {
                 display: flex;
                 align-items: baseline;
@@ -57,6 +102,21 @@
                 }
                 .icon {
                     margin-right: 5px;
+                    @media (max-width: 529.9px) {
+                        display: none;
+                    }
+                }
+                @media (max-width: 1020px) {
+                    @include btn(100px, 40px, 18px);
+                }
+                @media (max-width: 767.9px) {
+                    @include btn(80px, 40px, 16px);
+                }
+                @media (max-width: 529.9px) {
+                    @include btn(60px, 30px, 16px);
+                }
+                @media (max-width: 399.9px) {
+                    @include btn(50px, 30px, 14px);
                 }
             }
         }
