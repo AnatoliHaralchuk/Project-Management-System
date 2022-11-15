@@ -1,0 +1,14 @@
+@import 'src/assets/styles/constants';
+.loading-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: $gold;
+}
+
+
+

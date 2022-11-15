@@ -12,8 +12,8 @@
       <span class="header__logo-text">A</span>
     </div>
     <div class="header__auth">
-      <span class="header__auth-text">Вход</span> <span class="header__auth-slash">|</span>
-      <span class="header__auth-text">Регистрация</span>
+      <span class="header__auth-text" [routerLink]="['auth', 'login']">Вход</span> <span class="header__auth-slash">|</span>
+      <span class="header__auth-text" [routerLink]="['auth', 'signup']">Регистрация</span>
     </div>
   </div>
 </header>
