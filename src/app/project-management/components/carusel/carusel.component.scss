@@ -1,0 +1,73 @@
+.about-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-title{
+  font-size: 28px;
+}
+
+.slider-block{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.about-card{
+  max-width: 650px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+}
+.mat-card-title-group{
+  width: 95%;
+  justify-content: space-around;
+}
+
+.profil-foto{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 30%, 0);
+    transform: translate3d(0, 30%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 30%, 0);
+    transform: translate3d(0, 30%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+.animate__fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  animation-duration: 0.4s;
+}
