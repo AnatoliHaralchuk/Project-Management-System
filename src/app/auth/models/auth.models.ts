@@ -17,3 +17,8 @@ export interface Error {
   statusCode: number;
   message: string;
 }
+
+export interface LocalToken {
+  value: string;
+  expiry: number
+}

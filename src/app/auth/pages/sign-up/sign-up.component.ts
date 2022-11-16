@@ -46,12 +46,11 @@ export class SignUpComponent implements OnInit, OnDestroy {
     ).subscribe((user) => {
         this.authService.isLoading = false;
         this.authService.user = {password: form.value.password, ...user}
-        console.log(this.authService.user)
         this.router.navigate(['auth', 'login'])
       })
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe()
+    if (this.sub) this.sub.unsubscribe()
   }
 }

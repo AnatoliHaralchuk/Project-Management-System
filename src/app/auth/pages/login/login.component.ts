@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StrongPassValidator } from '../../strongpass.validator';
-import {ModelHttpService} from "../../../project-management/model-http/model-http.service";
-import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
-import {tap} from "rxjs";
+import { ModelHttpService } from "../../../project-management/model-http/model-http.service";
+import { AuthService } from "../../services/auth.service";
+import { Router } from "@angular/router";
+import { tap } from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -28,15 +28,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(form: FormGroup) {
+  createToken(form: FormGroup) {
     this.model.loginCreateToken(form.value).pipe(
       tap(() => {
         this.authService.isLoading = true;
       })
-    ).subscribe((res) => {
-        this.authService.isLoading = false;
-        this.authService.token = res.token
-        this.router.navigate(['main'])
+    ).subscribe((result) => {
+        // this.model.getAllUsers().subscribe(
+        //   r => console.log(r)
+        // )
+        localStorage.setItem('userLogin', form.value.login)
+        this.authService.logIn(result.token)
       })
   }
 }
