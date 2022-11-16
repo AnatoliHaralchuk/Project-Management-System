@@ -20,5 +20,5 @@ export interface Error {
 
 export interface LocalToken {
   value: string;
-  expiry: number
+  expiry: number;
 }

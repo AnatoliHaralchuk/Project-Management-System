@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StrongPassValidator } from '../../strongpass.validator';
-import { ModelHttpService } from "../../../project-management/model-http/model-http.service";
-import { AuthService } from "../../services/auth.service";
-import { Router } from "@angular/router";
-import { tap } from "rxjs";
+import { ModelHttpService } from '../../../project-management/model-http/model-http.service';
+import { AuthService } from '../../services/auth.service';
+import { map, mergeMap, Subscription, tap } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   form!: FormGroup;
 
   hidePass = true;
 
-  constructor(private model: ModelHttpService, private authService: AuthService, private router: Router) {}
+  sub!: Subscription;
+
+  constructor(private model: ModelHttpService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -29,16 +30,27 @@ export class LoginComponent implements OnInit {
   }
 
   createToken(form: FormGroup) {
-    this.model.loginCreateToken(form.value).pipe(
-      tap(() => {
-        this.authService.isLoading = true;
-      })
-    ).subscribe((result) => {
-        // this.model.getAllUsers().subscribe(
-        //   r => console.log(r)
-        // )
-        localStorage.setItem('userLogin', form.value.login)
-        this.authService.logIn(result.token)
-      })
+    this.authService.isLoading = true;
+    this.sub = this.model
+      .loginCreateToken(form.value)
+      .pipe(
+        tap((result) => {
+          this.authService.isLoading = false;
+          localStorage.setItem('userLogin', form.value.login);
+          this.authService.logIn(result.token);
+        }),
+        mergeMap(() => this.model.getAllUsers()),
+        map((users) => users?.find((user) => user.login === form.value.login)),
+        tap((res) => {
+          const user = { ...res };
+          localStorage.setItem('user', JSON.stringify(user));
+          Object.assign(this.authService.user, user);
+        }),
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub) this.sub.unsubscribe();
   }
 }

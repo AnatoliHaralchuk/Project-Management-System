@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatIconModule} from '@angular/material/icon';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CaruselComponent } from './components/carusel/carusel.component';
-
 
 const routes: Routes = [
   {
@@ -32,8 +31,8 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ProjectManagementModule {}

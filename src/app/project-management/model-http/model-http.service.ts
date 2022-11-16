@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, EMPTY, Observable } from 'rxjs';
 import { Login, Token, User } from '../../auth/models/auth.models';
 import { Board, BoardColumns, BoardTasks, Task } from '../models/management.models';
-import {AuthService} from "../../auth/services/auth.service";
+import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -65,17 +65,19 @@ export class ModelHttpService {
   }
 
   signUpCreatAccount(user: User): Observable<User> {
-    return this.http.post<User>('signup', {
-      name: user.name,
-      login: user.login,
-      password: user.password,
-    }).pipe(
-      catchError((err) => {
-        this.authService.isLoading = false;
-        if (err.status) console.log('что-то делаем если user не найден');
-        return EMPTY;
-      }),
-    );
+    return this.http
+      .post<User>('signup', {
+        name: user.name,
+        login: user.login,
+        password: user.password,
+      })
+      .pipe(
+        catchError((err) => {
+          this.authService.isLoading = false;
+          if (err.status) console.log('что-то делаем если user не найден');
+          return EMPTY;
+        }),
+      );
   }
 
   // START BOARDS//////////////////////////////////////////////////
