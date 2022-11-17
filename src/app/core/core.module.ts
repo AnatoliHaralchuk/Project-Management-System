@@ -5,6 +5,7 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { AppRoutingModule } from '../app-routing.module';
 
+
 @NgModule({
   declarations: [
     HeaderComponent,

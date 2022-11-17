@@ -4,12 +4,19 @@ import { catchError, EMPTY, Observable } from 'rxjs';
 import { Login, Token, User } from '../../auth/models/auth.models';
 import { Board, BoardColumns, BoardTasks, Task } from '../models/management.models';
 import { AuthService } from '../../auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModelHttpService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private http: HttpClient, 
+    private authService: AuthService,
+    private router: Router
+    ) {}
+
+  message: string = '';
 
   //START USERS//////////////////////////////////////////////
   getAllUsers(): Observable<Array<User> | null> {
@@ -58,7 +65,14 @@ export class ModelHttpService {
   loginCreateToken(login: Login): Observable<Token> {
     return this.http.post<Token>('signin', { ...login }).pipe(
       catchError((err) => {
-        if (err.status) console.log('что-то делаем если user не найден');
+        switch(err.status) {
+          case (403): 
+            this.message = 'Неправильный логин или пароль!';
+            break;
+          default:
+            this.message = 'Произошла ошибка, попробуйте снова.';
+        }
+        this.authService.message = this.message;
         return EMPTY;
       }),
     );

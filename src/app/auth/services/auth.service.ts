@@ -16,6 +16,8 @@ export class AuthService {
 
   user: User = this.localUser ? { ...JSON.parse(this.localUser) } : {};
 
+  message: string = '';
+
   logIn(token: string) {
     this.isLoading = false;
     const fourHour: number = 4 * 3600 * 1000;

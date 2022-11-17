@@ -10,7 +10,7 @@ import { map, mergeMap, Subscription, tap } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   form!: FormGroup;
 
   hidePass = true;
@@ -31,8 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   createToken(form: FormGroup) {
     this.authService.isLoading = true;
-    this.sub = this.model
-      .loginCreateToken(form.value)
+    this.model.loginCreateToken(form.value)
       .pipe(
         tap((result) => {
           this.authService.isLoading = false;
@@ -48,9 +47,5 @@ export class LoginComponent implements OnInit, OnDestroy {
         }),
       )
       .subscribe();
-  }
-
-  ngOnDestroy(): void {
-    if (this.sub) this.sub.unsubscribe();
   }
 }
