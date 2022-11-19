@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   sub!: Subscription;
 
-  constructor(private model: ModelHttpService, private authService: AuthService) {}
+  constructor(private model: ModelHttpService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
 
   createToken(form: FormGroup) {
     this.authService.isLoading = true;
-    this.model.loginCreateToken(form.value)
+    this.sub = this.model
+      .loginCreateToken(form.value)
       .pipe(
         tap((result) => {
           this.authService.isLoading = false;
@@ -45,7 +46,8 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('user', JSON.stringify(user));
           Object.assign(this.authService.user, user);
         }),
-      )
-      .subscribe();
+      ).subscribe()
   }
+
 }
+
