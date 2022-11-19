@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StrongPassValidator } from '../../strongpass.validator';
 import { ModelHttpService } from '../../../project-management/model-http/model-http.service';
@@ -10,7 +10,7 @@ import { map, mergeMap, Subscription, tap } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   form!: FormGroup;
 
   hidePass = true;
@@ -48,9 +48,5 @@ export class LoginComponent implements OnInit, OnDestroy {
         }),
       )
       .subscribe();
-  }
-
-  ngOnDestroy(): void {
-    if (this.sub) this.sub.unsubscribe();
   }
 }
