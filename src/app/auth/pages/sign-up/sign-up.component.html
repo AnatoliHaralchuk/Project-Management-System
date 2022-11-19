@@ -1,5 +1,5 @@
 <div class="signup-container">
-  <form class="signup-body" [formGroup]="form">
+  <form class="signup-body" [formGroup]="form" (ngSubmit)="signUp(form)">
     <h2 class="signup-title">Sign Up</h2>
 
     <mat-form-field class="name-field" appearance="fill">

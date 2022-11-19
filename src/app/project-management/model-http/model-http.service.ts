@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, EMPTY, Observable } from 'rxjs';
 import { Login, Token, User } from '../../auth/models/auth.models';
 import { Board, BoardColumns, BoardTasks, Task } from '../models/management.models';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModelHttpService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   //START USERS//////////////////////////////////////////////
   getAllUsers(): Observable<Array<User> | null> {
@@ -55,15 +56,28 @@ export class ModelHttpService {
 
   //START Authorization//////////////////////////////////////////////
   loginCreateToken(login: Login): Observable<Token> {
-    return this.http.post<Token>('signin', { ...login });
+    return this.http.post<Token>('signin', { ...login }).pipe(
+      catchError((err) => {
+        if (err.status) console.log('что-то делаем если user не найден');
+        return EMPTY;
+      }),
+    );
   }
 
   signUpCreatAccount(user: User): Observable<User> {
-    return this.http.post<User>('signup', {
-      name: user.name,
-      login: user.login,
-      password: user.password,
-    });
+    return this.http
+      .post<User>('signup', {
+        name: user.name,
+        login: user.login,
+        password: user.password,
+      })
+      .pipe(
+        catchError((err) => {
+          this.authService.isLoading = false;
+          if (err.status) console.log('что-то делаем если user не найден');
+          return EMPTY;
+        }),
+      );
   }
 
   // START BOARDS//////////////////////////////////////////////////

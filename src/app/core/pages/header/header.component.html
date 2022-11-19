@@ -11,9 +11,17 @@
       <img class="header__logo-img" src="./../../../assets/img/pngegg.png" alt="cerberus" />
       <span class="header__logo-text">A</span>
     </div>
-    <div class="header__auth">
-      <span class="header__auth-text">Вход</span> <span class="header__auth-slash">|</span>
-      <span class="header__auth-text">Регистрация</span>
+    <div class="header__auth" *ngIf="!authService.isToken; else logout">
+      <span class="header__auth-text" [routerLink]="['auth', 'login']">Вход</span>
+      <span class="header__auth-slash">|</span>
+      <span class="header__auth-text" [routerLink]="['auth', 'signup']">Регистрация</span>
     </div>
+    <ng-template #logout>
+      <div class="header__auth">
+        <span class="header__auth-text">{{ authService.user.name | titlecase }}</span>
+        <span class="header__auth-slash">|</span>
+        <span class="header__auth-text" (click)="authService.logout()">Выход</span>
+      </div>
+    </ng-template>
   </div>
 </header>
