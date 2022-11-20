@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   sub!: Subscription;
 
-  constructor(private model: ModelHttpService, private authService: AuthService) { }
+  constructor(private model: ModelHttpService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -46,8 +46,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('user', JSON.stringify(user));
           Object.assign(this.authService.user, user);
         }),
-      ).subscribe()
+      )
+      .subscribe();
   }
-
 }
-

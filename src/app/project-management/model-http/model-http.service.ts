@@ -10,11 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class ModelHttpService {
-  constructor(
-    private http: HttpClient, 
-    private authService: AuthService,
-    private router: Router
-    ) {}
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {}
 
   message: string = '';
 
@@ -65,8 +61,8 @@ export class ModelHttpService {
   loginCreateToken(login: Login): Observable<Token> {
     return this.http.post<Token>('signin', { ...login }).pipe(
       catchError((err) => {
-        switch(err.status) {
-          case (403): 
+        switch (err.status) {
+          case 403:
             this.message = 'Неправильный логин или пароль!';
             break;
           default:

@@ -8,7 +8,12 @@
     </div>
     <div class="header__logo">
       <span class="header__logo-text">P</span>
-      <img class="header__logo-img" src="./../../../assets/img/pngegg.png" alt="cerberus" />
+      <img
+        [routerLink]="['']"
+        class="header__logo-img"
+        src="./../../../assets/img/pngegg.png"
+        alt="cerberus"
+      />
       <span class="header__logo-text">A</span>
     </div>
     <div class="header__auth" *ngIf="!authService.isToken; else logout">

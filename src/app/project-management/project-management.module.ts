@@ -8,16 +8,12 @@ import { WelcomePageComponent } from './pages/welcome-page/welcome-page.componen
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CaruselComponent } from './components/carusel/carusel.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MainPageComponent,
-    children: [
-      { path: '', redirectTo: '/main', pathMatch: 'full' },
-      { path: 'main', component: MainPageComponent },
-    ],
-  },
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'main', component: MainPageComponent, canActivate: [AuthGuard] },
 ];
 @NgModule({
   declarations: [
