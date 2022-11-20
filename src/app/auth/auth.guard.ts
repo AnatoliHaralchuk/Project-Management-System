@@ -1,20 +1,16 @@
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { LocalToken } from './auth/models/auth.models';
+import {LocalToken} from "./models/auth.models";
 
-Injectable({
+@Injectable({
   providedIn: 'root',
-});
+})
+
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 
   // @ts-ignore
-  canActivate(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    route: ActivatedRouteSnapshot,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    state: RouterStateSnapshot,
-  ): boolean | void {
+  canActivate(): boolean | void {
     const tokenStr: string | null = localStorage.getItem('token');
     if (tokenStr) {
       const now = new Date().getTime();
@@ -28,7 +24,6 @@ export class AuthGuard implements CanActivate {
       }
       return true;
     }
-    console.log('hf,jnftn');
     this.router.navigate([
       'auth',
       'login',

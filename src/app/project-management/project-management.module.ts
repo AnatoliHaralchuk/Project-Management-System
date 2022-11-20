@@ -8,7 +8,7 @@ import { WelcomePageComponent } from './pages/welcome-page/welcome-page.componen
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CaruselComponent } from './components/carusel/carusel.component';
-import { AuthGuard } from '../auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
