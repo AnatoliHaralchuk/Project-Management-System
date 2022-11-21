@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoardComponent } from './board.component';
+import { DeleteFormComponent } from './delete-form.component';
 
-describe('BoardComponent', () => {
-  let component: BoardComponent;
-  let fixture: ComponentFixture<BoardComponent>;
+describe('DeleteFormComponent', () => {
+  let component: DeleteFormComponent;
+  let fixture: ComponentFixture<DeleteFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BoardComponent],
+      declarations: [DeleteFormComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BoardComponent);
+    fixture = TestBed.createComponent(DeleteFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

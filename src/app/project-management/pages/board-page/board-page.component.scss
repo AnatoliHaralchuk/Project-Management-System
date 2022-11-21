@@ -1,9 +1,9 @@
 @import 'src/assets/styles/constants';
 .boards-container {
 
-  margin: 1rem;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+  margin: 1rem;
 
   & .board-add {
     margin: 1rem;
@@ -15,5 +15,13 @@
     align-items: center;
     justify-content: center;
     column-gap: 0.5rem;
+    transition: ease 0.3s;
+    cursor: pointer;
+    &:hover {
+      transform: scale(0.99);
+      border: 1px solid $gold;
+    }
   }
 }
+
+

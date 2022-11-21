@@ -1,7 +1,8 @@
 <div class="boards-container">
-  <app-board></app-board>
-  <mat-card class="board-add">
+  <app-board *ngFor="let board of service.boards" [board]="board"></app-board>
+  <mat-card class="board-add" (click)="addBoard()">
     <mat-icon>add</mat-icon>
-    <mat-card-content > Добавить доску </mat-card-content>
-  </mat-card >
+    <mat-card-content> Добавить </mat-card-content>
+  </mat-card>
 </div>
+<app-create-board-form></app-create-board-form>

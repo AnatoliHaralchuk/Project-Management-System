@@ -13,15 +13,26 @@ import { BoardComponent } from './components/board/board.component';
 import { ColumnComponent } from './components/column/column.component';
 import { BoardPageComponent } from './pages/board-page/board-page.component';
 import { ColumnPageComponent } from './pages/column-page/column-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateBoardFormComponent } from './components/board/create-board-form/create-board-form.component';
+import { EditBoardFormComponent } from './components/board/edit-board-form/edit-board-form.component';
+import { DeleteFormComponent } from './components/delete-form/delete-form.component';
+import { CreateColumnFormComponent } from './components/column/create-column-form/create-column-form.component';
+import { EditColumnFormComponent } from './components/column/edit-column-form/edit-column-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   { path: 'welcome', component: WelcomePageComponent },
-  { path: 'main', component: MainPageComponent, canActivate: [AuthGuard], children: [
+  {
+    path: 'main',
+    component: MainPageComponent,
+    canActivate: [AuthGuard],
+    children: [
       { path: '', redirectTo: '/main/board', pathMatch: 'full' },
-      { path:'board', component: BoardPageComponent },
+      { path: 'board', component: BoardPageComponent },
       { path: 'board/column', component: ColumnPageComponent },
-    ] },
+    ],
+  },
 ];
 @NgModule({
   declarations: [
@@ -32,6 +43,11 @@ const routes: Routes = [
     ColumnComponent,
     BoardPageComponent,
     ColumnPageComponent,
+    CreateBoardFormComponent,
+    EditBoardFormComponent,
+    DeleteFormComponent,
+    CreateColumnFormComponent,
+    EditColumnFormComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -40,6 +56,8 @@ const routes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [RouterModule],
 })

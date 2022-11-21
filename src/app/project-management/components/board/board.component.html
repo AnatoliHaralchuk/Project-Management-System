@@ -1,6 +1,6 @@
 <mat-card class="board-container">
-  <p class="board__title">1111111111 11111</p>
-  <p class="board__text">>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, temporibus.</p>
+  <p class="board__title">{{ board.title | uppercase }}</p>
+  <p class="board__text">{{ board.description }}</p>
   <div class="board-btns">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon style="color: #3232eb">edit</mat-icon>
