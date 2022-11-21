@@ -1,0 +1,19 @@
+@import 'src/assets/styles/constants';
+.boards-container {
+
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+
+  & .board-add {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: $gold;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.5rem;
+  }
+}
