@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription, tap } from 'rxjs';
 import { ModelHttpService } from '../../model-http/model-http.service';
 import { CommonService } from '../../../core/services/common.service';
+import { Board } from '../../models/management.models';
 
 @Component({
   selector: 'app-board-page',
@@ -12,6 +13,12 @@ export class BoardPageComponent implements OnInit {
   constructor(private model: ModelHttpService, public service: CommonService) {}
 
   sub!: Subscription;
+
+  currentBoard: Board = {
+    id: '',
+    title: '',
+    description: '',
+  };
 
   ngOnInit(): void {
     this.sub = this.model
@@ -24,8 +31,7 @@ export class BoardPageComponent implements OnInit {
       .subscribe();
   }
 
-  addBoard() {
-    this.service.isBoard = false;
-    // this.form.reset();
+  changeForm(board: Board) {
+    this.currentBoard = board;
   }
 }

@@ -1,4 +1,4 @@
-<div class="form-container" *ngIf="!service.isBoard">
+<div class="form-container" *ngIf="service.isCreateBoard">
   <form class="form-body" [formGroup]="form" (ngSubmit)="createBoard(form)">
     <h2 class="form-title">Create new board</h2>
 
@@ -33,7 +33,7 @@
         type="reset"
         mat-stroked-button
         color="primary"
-        (click)="service.isBoard = true"
+        (click)="service.isCreateBoard = false; form.reset()"
       >
         Cancel
       </button>

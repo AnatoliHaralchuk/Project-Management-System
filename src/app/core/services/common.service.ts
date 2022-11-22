@@ -7,7 +7,11 @@ import { Board } from '../../project-management/models/management.models';
 export class CommonService {
   constructor() {}
 
-  isBoard = true;
+  isCreateBoard = false;
+
+  isEditBoard = false;
 
   boards: Board[] = [];
+
+  currentBoard!: Board;
 }

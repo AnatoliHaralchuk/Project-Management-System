@@ -29,8 +29,9 @@ export class CreateBoardFormComponent implements OnInit {
       .createBoard(form.value)
       .pipe(
         tap((board) => {
-          this.service.isBoard = true;
+          this.service.isCreateBoard = false;
           this.service.boards.push(board);
+          form.reset();
         }),
       )
       .subscribe();

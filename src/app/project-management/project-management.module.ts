@@ -30,7 +30,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/main/board', pathMatch: 'full' },
       { path: 'board', component: BoardPageComponent },
-      { path: 'board/column', component: ColumnPageComponent },
+      { path: 'board/:id/column', component: ColumnPageComponent },
     ],
   },
 ];
