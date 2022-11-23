@@ -12,17 +12,17 @@
   flex-direction: column;
   justify-content: space-around;
   & .board__title {
-    font-weight: bold;
-  }
+      font-weight: bold;
+    }
 
 
-  & .board-btns {
-    display: flex;
-    justify-content: space-between;
-  }
+    & .board-btns {
+      display: flex;
+      justify-content: space-between;
+    }
 
-  &:hover {
-    transform: scaleY(0.99);
-    border: 1px solid $gold;
+    &:hover {
+      transform: scaleY(0.99);
+      border: 1px solid $gold;
   }
 }

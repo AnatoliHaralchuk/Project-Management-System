@@ -19,6 +19,7 @@ import { EditBoardFormComponent } from './components/board/edit-board-form/edit-
 import { DeleteFormComponent } from './components/delete-form/delete-form.component';
 import { CreateColumnFormComponent } from './components/column/create-column-form/create-column-form.component';
 import { EditColumnFormComponent } from './components/column/edit-column-form/edit-column-form.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -49,16 +50,17 @@ const routes: Routes = [
     CreateColumnFormComponent,
     EditColumnFormComponent,
   ],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    FormsModule,
-  ],
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        FormsModule,
+        DragDropModule,
+    ],
   exports: [RouterModule],
 })
 export class ProjectManagementModule {}

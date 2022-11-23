@@ -25,7 +25,7 @@ export class BoardPageComponent implements OnInit {
       .getAllBoards()
       .pipe(
         tap((boards) => {
-          this.service.boards = this.service.boards.concat(boards);
+          if (!this.service.boards.length) this.service.boards = this.service.boards.concat(boards);
         }),
       )
       .subscribe();
