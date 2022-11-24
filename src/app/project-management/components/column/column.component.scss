@@ -1,3 +1,22 @@
+@import 'src/assets/styles/constants';
+.task-add {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: $gold;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+  transition: ease 0.3s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(0.99);
+    border: 1px solid $gold;
+  }
+}
+
 .example-container {
   width: 400px;
   max-width: 100%;

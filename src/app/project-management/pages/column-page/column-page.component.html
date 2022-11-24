@@ -1,6 +1,9 @@
 <div class="column-page">
-  <div class="column-container" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
-    <app-column class="example-box" *ngFor="let column of service.columns" cdkDrag>{{column}}</app-column>
+  <div cdkDropListGroup cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)" class="example-list column-container">
+    <app-column cdkDropList cdkDrag class="example-box"
+                *ngFor="let column of service.columns"
+                [column] = 'column'
+    ></app-column>
   </div>
   <mat-card class="column-add" (click)="this.service.isCreateColumn = true">
     <mat-icon>add</mat-icon>
@@ -9,3 +12,5 @@
 </div>
 <app-create-column-form></app-create-column-form>
 <app-edit-column-form></app-edit-column-form>
+<app-create-task-form></app-create-task-form>
+<app-edit-task-form></app-edit-task-form>

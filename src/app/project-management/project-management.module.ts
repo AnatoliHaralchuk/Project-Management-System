@@ -20,6 +20,9 @@ import { DeleteFormComponent } from './components/delete-form/delete-form.compon
 import { CreateColumnFormComponent } from './components/column/create-column-form/create-column-form.component';
 import { EditColumnFormComponent } from './components/column/edit-column-form/edit-column-form.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import { TaskComponent } from './components/task/task.component';
+import { CreateTaskFormComponent } from './components/task/create-task-form/create-task-form.component';
+import { EditTaskFormComponent } from './components/task/edit-task-form/edit-task-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -49,6 +52,9 @@ const routes: Routes = [
     DeleteFormComponent,
     CreateColumnFormComponent,
     EditColumnFormComponent,
+    TaskComponent,
+    CreateTaskFormComponent,
+    EditTaskFormComponent,
   ],
     imports: [
         RouterModule.forChild(routes),

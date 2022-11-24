@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ModelHttpService} from "../../../model-http/model-http.service";
 import {CommonService} from "../../../../core/services/common.service";
-import {tap} from "rxjs";
+import {mergeMap, tap} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-create-column-form',
@@ -12,28 +13,38 @@ import {tap} from "rxjs";
 export class CreateColumnFormComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private model: ModelHttpService, public service: CommonService) {}
+  constructor(private model: ModelHttpService, public service: CommonService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
       title: new FormControl('', [Validators.required]),
-      description: new FormControl('', [
-        Validators.required,
-        Validators.minLength(10),
-      ]),
     });
   }
 
-  createBoard(form: FormGroup) {
-    this.model
-      .createBoard(form.value)
+  // createBoard(form: FormGroup) {
+  //   this.model
+  //     .createBoard(form.value)
+  //     .pipe(
+  //       tap((board) => {
+  //         this.service.isCreateBoard = false;
+  //         this.service.boards.push(board);
+  //         form.reset();
+  //       }),
+  //     )
+  //     .subscribe();
+  // }
+
+  createColumn(form: FormGroup) {
+    this.route.params
       .pipe(
-        tap((board) => {
-          this.service.isCreateBoard = false;
-          this.service.boards.push(board);
-          form.reset();
+        tap(() => {
+          this.service.isCreateColumn = false
         }),
-      )
-      .subscribe();
+        mergeMap((params) => this.model.createColumn(params['id'], form.value.title)),
+        tap((column) => {
+          this.service.columns.push(column)
+        }),
+    )
+      .subscribe()
   }
 }

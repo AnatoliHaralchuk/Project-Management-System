@@ -1,0 +1,28 @@
+@import 'src/assets/styles/constants';
+
+.board-container {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: $gold;
+  transition: ease 0.3s;
+  overflow: auto;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  & .board__title {
+    font-weight: bold;
+  }
+
+
+  & .board-btns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &:hover {
+    transform: scaleY(0.99);
+    border: 1px solid $gold;
+  }
+}

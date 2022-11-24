@@ -1,27 +1,17 @@
 <div class="example-container">
-  <h2>To do</h2>
+  <h2>{{ column.title }}</h2>
 
   <div
     cdkDropList
-    #todoList="cdkDropList"
-    [cdkDropListData]="todo"
-    [cdkDropListConnectedTo]="[doneList]"
+    [cdkDropListData]="service.taskTitle"
     class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    <div class="example-box" *ngFor="let task of service.tasks" cdkDrag></div>
   </div>
-</div>
 
-<div class="example-container">
-  <h2>Done</h2>
+  <mat-card class="task-add" (click)="this.service.isCreateTask = true">
+    <mat-icon>add</mat-icon>
+    <mat-card-content> Добавить </mat-card-content>
+  </mat-card>
 
-  <div
-    cdkDropList
-    #doneList="cdkDropList"
-    [cdkDropListData]="done"
-    [cdkDropListConnectedTo]="[todoList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-  </div>
 </div>

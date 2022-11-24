@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
+import {BoardColumns} from "../../models/management.models";
+import {ModelHttpService} from "../../model-http/model-http.service";
+import {CommonService} from "../../../core/services/common.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-column',
@@ -7,7 +11,15 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag
   styleUrls: ['./column.component.scss'],
 })
 export class ColumnComponent implements OnInit {
-  constructor() {}
+
+  @Input() column!: BoardColumns;
+
+  constructor(
+    private model: ModelHttpService,
+    public service: CommonService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {}
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];

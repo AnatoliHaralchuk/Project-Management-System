@@ -1,29 +1,12 @@
 <div class="form-container" *ngIf="service.isCreateColumn">
-  <form class="form-body" [formGroup]="form" (ngSubmit)="createBoard(form)">
-    <h2 class="form-title">Create new board</h2>
+  <form class="form-body" [formGroup]="form" (ngSubmit)="createColumn(form)">
+    <h2 class="form-title">Create new column</h2>
 
     <mat-form-field class="title-field" appearance="fill">
       <mat-label>title</mat-label>
       <input matInput formControlName="title" autocomplete="off" />
       <mat-error *ngIf="form.get('title')?.touched && form.get('title')?.invalid">
         <small *ngIf="(form.get('title')?.errors)!['required']">Please enter a title</small>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="description-field" appearance="fill">
-      <mat-label>description</mat-label>
-      <input matInput formControlName="description" autocomplete="off" />
-      <mat-error *ngIf="form.get('description')?.touched && form.get('description')?.invalid">
-        <small *ngIf="(form.get('description')?.errors)!['required']"
-        >Please enter a description</small
-        >
-        <small
-          *ngIf="
-            (form.get('description')?.errors)!['minlength'] &&
-            !(form.get('description')?.errors)!['required']
-          "
-        >Your password isn't strong enough: at least 10 characters</small
-        >
       </mat-error>
     </mat-form-field>
 

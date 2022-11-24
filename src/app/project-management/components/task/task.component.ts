@@ -1,16 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Board } from '../../models/management.models';
-import { ModelHttpService } from '../../model-http/model-http.service';
-import { CommonService } from '../../../core/services/common.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ModelHttpService} from "../../model-http/model-http.service";
+import {CommonService} from "../../../core/services/common.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Board} from "../../models/management.models";
 import {tap} from "rxjs";
 
 @Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss'],
+  selector: 'app-task',
+  templateUrl: './task.component.html',
+  styleUrls: ['./task.component.scss']
 })
-export class BoardComponent implements OnInit {
+export class TaskComponent implements OnInit {
   @Input() board!: Board;
 
   @Input() id!: number;
@@ -49,7 +49,6 @@ export class BoardComponent implements OnInit {
           ]);
         })
       ).subscribe()
-
     }
   }
 }

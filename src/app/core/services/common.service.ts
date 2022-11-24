@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Board, BoardColumns} from '../../project-management/models/management.models';
+import {Board, BoardColumns, BoardTasks} from '../../project-management/models/management.models';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +15,19 @@ export class CommonService {
 
   isEditColumn = false;
 
+  isCreateTask = false;
+
+  isEditTask = false;
+
+  curBoardId: string = '';
+
   boards: Board[] = [];
 
-  columns: BoardColumns[] = []
+  columns: BoardColumns[] = [];
+
+  tasks: BoardTasks[] = [];
+
+  taskTitle: string[] = [];
 
   currentBoard!: Board;
 }
