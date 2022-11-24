@@ -1,38 +1,142 @@
+@import './../../../../assets/styles/constants.scss';
 
-.welcome-wrapper{
+.welcome-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   margin-bottom: 40px;
-
 }
-.welcom-title{
-  color: #f44336;
-  font-size: 32px;
-  & span{
+
+.welcom-title {
+  @include font(32px, $bronze);
+
+  & span {
     font-weight: 700;
   }
 }
 
-h4{
+h4 {
   color: #acacab;
   font-size: 20px;
   font-weight: 400;
 }
 
-.login-block{
-  display:flex;
+.login-block {
+  display: flex;
   align-items: flex-start;
-  gap:20px;
+  gap: 20px;
+
   @media (max-width: 500px) {
     display: none;
   }
 }
 
-.name-inp{
+.name-inp {
   width: 300px;
   height: 30px;
   padding: 0px;
+}
+
+blockquote {
+  margin-top: 10px;
+  color: #474C4F;
+  padding: 30px;
+  position: relative;
+  text-align: center;
+  justify-self: flex-end;
+  align-self: flex-end;
+  font-style: italic;
+  @include font('16px', #0000006b, 'Area', 100);
+}
+
+blockquote:before {
+  content: "\f10d";
+  font-family: FontAwesome;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 14px;
+  color: #474C4F;
+  font-size: 20px;
+  padding: 0 15px;
+}
+
+blockquote:after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  right: 15px;
+  height: 4px;
+  border-top: 1px dotted #474C4F;
+  border-bottom: 1px dotted #474C4F;
+}
+
+blockquote p {
+  font-size: 20px;
+  letter-spacing: .05em;
+  line-height: 1.4;
+}
+
+blockquote cite {
+  font-style: normal;
+  font-weight: 300;
+}
+
+.welcome__btn {
+  margin-top: 25px;
+  @include btn(200px, 50px);
+  transition: all .3s ease;
+
+  &:hover {
+    box-shadow: $bronze-shadow;
+
+  }
+}
+
+.info {
+  margin-top: 25px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 40%);
+  justify-content: center;
+  gap: 50px;
+  .info__box {
+    box-shadow: $gold-shadow;
+    min-height: 150px;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    .info__box-title {
+      @include font(18px, $bronze);
+    }
+    .info__box-text {
+      @include font(16px, #474C4F, 'Roboto', 500);
+      text-align: justify;
+    }
+  }
+}
+
+.welcome__info {
+  margin-top: 30px;
+  @include font(26px, $bronze);
+}
+
+.welcome__text {
+  margin: 0 auto;
+  width: 85%;
+  text-align: justify;
+  @include font(18px, #474C4F, 'Roboto', 400)
+}
+
+.link {
+  cursor: pointer;
+  color: $bronze;
+  font-weight: 700;
 }

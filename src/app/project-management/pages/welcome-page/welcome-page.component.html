@@ -1,17 +1,24 @@
 <section class="welcome-wrapper">
-  <h2 class="welcom-title">Welcome to <span>Project Management Application</span></h2>
+  <blockquote class="welcome__slogan">
+    <p>Если хочешь рассмешить Бога, расскажи ему о своих планах</p>
+    <footer>— <cite>Наш девиз</cite></footer>
+  </blockquote>
+  <h2 class="welcom-title">Добро пожаловать в <span>Планировщик Ваших Задач!</span></h2>
   <h4>
-    Bring your teammates to optimize the work process, <br />
-    improve efficiency and bring your results to the new level!
+    Мы распланируем вашу жизнь так, что вам некогда будет умирать
   </h4>
-  <div class="login-block">
-    <mat-form-field class="name-inp" color="warn">
-      <mat-label class="label">Your name</mat-label>
-      <input matInput placeholder="Ex. Ivan..." />
-    </mat-form-field>
-    <button mat-stroked-button color="warn" [routerLink]="['/auth/signup']">
-      Sing-up for free
-    </button>
-  </div>
+  <p class="welcome__text">Вы ничего не успеваете? Всё валится из рук? Бешеный ритм городской жизни буквально рушит ваши планы? Представляем вашему вниманию PMA! PMA - это уникальная, инновационная разработка, разработанная разработчиками из разных стран. В основе данного приложения лежит простая идея: распланировать рабочий процесс с помощью <span class="link">PMA быстро качественно бесплатно</span>. Для достижения этой цели в ядро настоящей платформы внедрена современная, но успевшая полюбиться миллиардам гражданам нашей страны стратегия организации, - Канбан. Вам больше  не придется страдать от собственной неорганизованности и безалаберности. Захотели <span class="link">купить билет на Авиасейлс в Москве недорого</span>? Занесте эту задачу в таблицу и наслаждайтесь!</p>
+  <button class="welcome__btn">Попробовать</button>
   <app-carusel></app-carusel>
+  <h3 class="welcome__info">Почему именно мы</h3>
+  <div class="info">
+    <div class="info__box">
+      <h4 class="info__box-title">Полиморфный подход</h4>
+      <p class="info__box-text">В нашей дружной команде трудятся выходцы из самых разных стран. У каждого из нас собственный взгляд на процесс планирования, основанный на особенностях его культуры. Прежде, чем объединиться, и для того, чтобы объединиться, мы сначала решительно и определенно размежевались. Результат перед вами.</p>
+    </div>
+    <div class="info__box">
+      <h4 class="info__box-title">Полностью бесплатный продукт</h4>
+      <p class="info__box-text">Работать бесплатно - это наша фишка. Вот уже почти год, как мы трудимся в таком режиме. За это время мы произвели на свет множество самых разных программных продуктов, и ни за одни из них мы не получили ни копейни. Это приложение не является исключением. И, признаться, нам это нравится.</p>
+    </div>
+  </div>
 </section>
