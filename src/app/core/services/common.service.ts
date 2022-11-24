@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Board, BoardColumns, BoardTasks} from '../../project-management/models/management.models';
+import { Board, BoardColumns, BoardTasks } from '../../project-management/models/management.models';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +12,6 @@ export class CommonService {
   isEditBoard = false;
 
   isCreateColumn = false;
-
-  isEditColumn = false;
 
   isCreateTask = false;
 

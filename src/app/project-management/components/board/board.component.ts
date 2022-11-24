@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Board } from '../../models/management.models';
 import { ModelHttpService } from '../../model-http/model-http.service';
 import { CommonService } from '../../../core/services/common.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {tap} from "rxjs";
+import { ActivatedRoute, Router } from '@angular/router';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-board',
@@ -21,7 +21,7 @@ export class BoardComponent implements OnInit {
     private model: ModelHttpService,
     public service: CommonService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {}
@@ -39,17 +39,18 @@ export class BoardComponent implements OnInit {
 
   toBoard(event: any, board: Board) {
     if (!(event.target.tagName === 'MAT-ICON')) {
-      this.route.params.pipe(
-        tap((params) => {
-          this.service.curBoardId = params['id']
-          this.router.navigate([
-            '/main/board',
-            board.id,
-            'column',
-          ]);
-        })
-      ).subscribe()
-
+      this.route.params
+        .pipe(
+          tap((params) => {
+            this.service.curBoardId = params['id'];
+            this.router.navigate([
+              '/main/board',
+              board.id,
+              'column',
+            ]);
+          }),
+        )
+        .subscribe();
     }
   }
 }

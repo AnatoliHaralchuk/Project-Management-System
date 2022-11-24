@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
-import {BoardColumns} from "../../models/management.models";
-import {ModelHttpService} from "../../model-http/model-http.service";
-import {CommonService} from "../../../core/services/common.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Component, Input, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { BoardColumns } from '../../models/management.models';
+import { ModelHttpService } from '../../model-http/model-http.service';
+import { CommonService } from '../../../core/services/common.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { mergeMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-column',
@@ -11,20 +12,18 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./column.component.scss'],
 })
 export class ColumnComponent implements OnInit {
-
   @Input() column!: BoardColumns;
+
+  isEditColumn = false;
 
   constructor(
     private model: ModelHttpService,
     public service: CommonService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {}
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -37,5 +36,34 @@ export class ColumnComponent implements OnInit {
         event.currentIndex,
       );
     }
+  }
+
+  deleteColumn(columnId: string) {
+    this.route.params
+      .pipe(
+        tap(
+          () =>
+            (this.service.columns = this.service.columns.filter(
+              (column) => column.id !== columnId,
+            )),
+        ),
+        mergeMap((params) => this.model.deleteColumn(params['id'], columnId)),
+      )
+      .subscribe();
+  }
+
+  editColumnTitle(event: any, column: BoardColumns) {
+    this.isEditColumn = true;
+    // this.route.params
+    //   .pipe(
+    //     tap(
+    //       () =>
+    //         (this.service.columns = this.service.columns.filter(
+    //           (column) => column.id !== columnId,
+    //         )),
+    //     ),
+    //     mergeMap((params) => this.model.deleteColumn(params['id'], columnId)),
+    //   )
+    //   .subscribe();
   }
 }
