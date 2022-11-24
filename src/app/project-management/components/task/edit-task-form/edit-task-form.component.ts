@@ -1,14 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Board} from "../../../models/management.models";
-import {ModelHttpService} from "../../../model-http/model-http.service";
-import {CommonService} from "../../../../core/services/common.service";
-import {tap} from "rxjs";
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Board } from '../../../models/management.models';
+import { ModelHttpService } from '../../../model-http/model-http.service';
+import { CommonService } from '../../../../core/services/common.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-edit-task-form',
   templateUrl: './edit-task-form.component.html',
-  styleUrls: ['./edit-task-form.component.scss']
+  styleUrls: ['./edit-task-form.component.scss'],
 })
 export class EditTaskFormComponent implements OnInit {
   form!: FormGroup;
@@ -27,12 +27,12 @@ export class EditTaskFormComponent implements OnInit {
     });
   }
 
-  ngOnChanges(): void {
-    if (this.form) {
-      this.form.get('title')!.setValue(this.curBoard.title);
-      this.form.get('description')!.setValue(this.curBoard.description);
-    }
-  }
+  // ngOnChanges(): void {
+  //   if (this.form) {
+  //     this.form.get('title')!.setValue(this.curBoard.title);
+  //     this.form.get('description')!.setValue(this.curBoard.description);
+  //   }
+  // }
 
   editBoard(id: string, form: Board) {
     this.model

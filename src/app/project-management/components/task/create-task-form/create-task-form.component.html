@@ -15,14 +15,14 @@
       <input matInput formControlName="description" autocomplete="off" />
       <mat-error *ngIf="form.get('description')?.touched && form.get('description')?.invalid">
         <small *ngIf="(form.get('description')?.errors)!['required']"
-        >Please enter a description</small
+          >Please enter a description</small
         >
         <small
           *ngIf="
             (form.get('description')?.errors)!['minlength'] &&
             !(form.get('description')?.errors)!['required']
           "
-        >Your password isn't strong enough: at least 10 characters</small
+          >Your password isn't strong enough: at least 10 characters</small
         >
       </mat-error>
     </mat-form-field>
@@ -49,4 +49,3 @@
     </div>
   </form>
 </div>
-

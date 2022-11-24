@@ -1,14 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ModelHttpService} from "../../model-http/model-http.service";
-import {CommonService} from "../../../core/services/common.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Board} from "../../models/management.models";
-import {tap} from "rxjs";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ModelHttpService } from '../../model-http/model-http.service';
+import { CommonService } from '../../../core/services/common.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Board } from '../../models/management.models';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss']
+  styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent implements OnInit {
   @Input() board!: Board;
@@ -21,7 +21,7 @@ export class TaskComponent implements OnInit {
     private model: ModelHttpService,
     public service: CommonService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {}
@@ -39,16 +39,18 @@ export class TaskComponent implements OnInit {
 
   toBoard(event: any, board: Board) {
     if (!(event.target.tagName === 'MAT-ICON')) {
-      this.route.params.pipe(
-        tap((params) => {
-          this.service.curBoardId = params['id']
-          this.router.navigate([
-            '/main/board',
-            board.id,
-            'column',
-          ]);
-        })
-      ).subscribe()
+      this.route.params
+        .pipe(
+          tap((params) => {
+            this.service.curBoardId = params['id'];
+            this.router.navigate([
+              '/main/board',
+              board.id,
+              'column',
+            ]);
+          }),
+        )
+        .subscribe();
     }
   }
 }

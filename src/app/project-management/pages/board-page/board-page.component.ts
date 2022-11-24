@@ -21,6 +21,7 @@ export class BoardPageComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.service.columns = [];
     this.sub = this.model
       .getAllBoards()
       .pipe(

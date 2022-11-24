@@ -1,4 +1,13 @@
 @import 'src/assets/styles/constants';
+
+.column-title {
+  cursor: pointer;
+  height: 4rem;
+  font-size: 1.5rem;
+  &:hover {
+  color: red;
+  }
+}
 .task-add {
   margin: 1rem;
   padding: 1rem;
@@ -11,9 +20,30 @@
   column-gap: 0.5rem;
   transition: ease 0.3s;
   cursor: pointer;
+  width: 100%;
   &:hover {
     transform: scale(0.99);
     border: 1px solid $gold;
+  }
+}
+
+.btn-container {
+  display: flex;
+  column-gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+
+  & .delete-btn {
+      transform: scale(1.5);
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background-color: $gold;
+      border-radius: 50%;
+    }
   }
 }
 

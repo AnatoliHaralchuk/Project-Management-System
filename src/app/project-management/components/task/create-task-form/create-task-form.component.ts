@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ModelHttpService} from "../../../model-http/model-http.service";
-import {CommonService} from "../../../../core/services/common.service";
-import {tap} from "rxjs";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModelHttpService } from '../../../model-http/model-http.service';
+import { CommonService } from '../../../../core/services/common.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-create-task-form',
   templateUrl: './create-task-form.component.html',
-  styleUrls: ['./create-task-form.component.scss']
+  styleUrls: ['./create-task-form.component.scss'],
 })
 export class CreateTaskFormComponent implements OnInit {
   form!: FormGroup;
