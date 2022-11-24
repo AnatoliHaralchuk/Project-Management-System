@@ -1,9 +1,9 @@
-<mat-card class="board-container" (click)="toBoard($event, board)">
-  <p class="board__title">{{ board.title }}</p>
-  <p class="board__text">{{ board.description }}</p>
+<mat-card class="board-container" (click)="toTask($event, column)">
+  <p class="board__title">{{ column.title }}</p>
+  <p class="board__text">{{ column.title }}</p>
   <div class="board-btns">
     <button
-      (click)="editBoard(board)"
+      (click)="editTask(column.id!)"
       mat-icon-button
       class="example-icon"
       aria-label="Example icon-button with menu icon"
@@ -11,7 +11,7 @@
       <mat-icon style="color: #3232eb">edit</mat-icon>
     </button>
     <button
-      (click)="deleteBoard(board.id!)"
+      (click)="deleteTask(column.id!)"
       mat-icon-button
       class="example-icon"
       aria-label="Example icon-button with menu icon"

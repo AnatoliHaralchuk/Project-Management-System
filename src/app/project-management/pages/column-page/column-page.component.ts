@@ -4,6 +4,7 @@ import { CommonService } from '../../../core/services/common.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { mergeMap, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { BoardColumns } from '../../models/management.models';
 
 @Component({
   selector: 'app-column-page',
@@ -11,6 +12,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./column-page.component.scss'],
 })
 export class ColumnPageComponent implements OnInit {
+  curColumn!: BoardColumns;
+
   constructor(
     private model: ModelHttpService,
     public service: CommonService,
@@ -32,5 +35,9 @@ export class ColumnPageComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.service.columns, event.previousIndex, event.currentIndex);
+  }
+
+  sentData(event: BoardColumns) {
+    this.curColumn = event;
   }
 }

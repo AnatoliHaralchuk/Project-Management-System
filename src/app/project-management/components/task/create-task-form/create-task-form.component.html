@@ -1,6 +1,6 @@
 <div class="form-container" *ngIf="service.isCreateTask">
-  <form class="form-body" [formGroup]="form" (ngSubmit)="createBoard(form)">
-    <h2 class="form-title">Create new board</h2>
+  <form class="form-body" [formGroup]="form" (ngSubmit)="createTask(form)">
+    <h2 class="form-title">Create new Task</h2>
 
     <mat-form-field class="title-field" appearance="fill">
       <mat-label>title</mat-label>

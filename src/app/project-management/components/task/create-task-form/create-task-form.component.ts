@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModelHttpService } from '../../../model-http/model-http.service';
 import { CommonService } from '../../../../core/services/common.service';
-import { tap } from 'rxjs';
+import { mergeMap, tap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { BoardColumns } from '../../../models/management.models';
 
 @Component({
   selector: 'app-create-task-form',
@@ -10,9 +12,15 @@ import { tap } from 'rxjs';
   styleUrls: ['./create-task-form.component.scss'],
 })
 export class CreateTaskFormComponent implements OnInit {
+  @Input() curColumn!: BoardColumns;
+
   form!: FormGroup;
 
-  constructor(private model: ModelHttpService, public service: CommonService) {}
+  constructor(
+    private model: ModelHttpService,
+    public service: CommonService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -35,5 +43,18 @@ export class CreateTaskFormComponent implements OnInit {
         }),
       )
       .subscribe();
+  }
+
+  createTask(form: FormGroup) {
+    this.service.isCreateTask = false;
+    // this.route.params
+    //   .pipe(
+    //     mergeMap((params) => this.model.createTask(params['id'], this.curColumn.id!,{
+    //       title: form.value.title,
+    //       description: form.value.description,
+    //       userId:
+    //     }))
+    //   )
+    //   .subscribe()
   }
 }
