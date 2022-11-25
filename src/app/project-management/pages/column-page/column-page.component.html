@@ -12,7 +12,10 @@
       class="example-box"
       *ngFor="let column of service.columns"
       [column]="column"
+      [curTask]="curTask"
+      [currentTaskFromEdit]="currentTaskFromEdit"
       (curColumn)="sentData($event)"
+      (currentTask)="sentTaskToEdit($event)"
     ></app-column>
   </div>
   <mat-card class="column-add" (click)="this.service.isCreateColumn = true">
@@ -21,5 +24,5 @@
   </mat-card>
 </div>
 <app-create-column-form></app-create-column-form>
-<app-create-task-form [curColumn]="curColumn"></app-create-task-form>
-<app-edit-task-form></app-edit-task-form>
+<app-create-task-form (curTask)="sendTaskToColumn($event)" [curColumn]="curColumn"></app-create-task-form>
+<app-edit-task-form (editTaskFromEdit)="editTaskFromEdit($event)" [task]="currentTask"></app-edit-task-form>

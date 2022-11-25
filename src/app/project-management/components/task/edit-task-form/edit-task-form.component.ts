@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Board } from '../../../models/management.models';
+import {Board, BoardTasks} from '../../../models/management.models';
 import { ModelHttpService } from '../../../model-http/model-http.service';
 import { CommonService } from '../../../../core/services/common.service';
 import { tap } from 'rxjs';
@@ -10,10 +10,14 @@ import { tap } from 'rxjs';
   templateUrl: './edit-task-form.component.html',
   styleUrls: ['./edit-task-form.component.scss'],
 })
-export class EditTaskFormComponent implements OnInit {
+export class EditTaskFormComponent implements OnInit, OnChanges {
   form!: FormGroup;
 
+  @Input() task!: BoardTasks;
+
   @Input() curBoard!: Board;
+
+  @Output() editTaskFromEdit: EventEmitter<BoardTasks> = new EventEmitter<BoardTasks>();
 
   constructor(private model: ModelHttpService, public service: CommonService) {}
 
@@ -24,25 +28,38 @@ export class EditTaskFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(10),
       ]),
+      user: new FormControl('', [Validators.required])
     });
   }
 
-  // ngOnChanges(): void {
-  //   if (this.form) {
-  //     this.form.get('title')!.setValue(this.curBoard.title);
-  //     this.form.get('description')!.setValue(this.curBoard.description);
-  //   }
-  // }
+  ngOnChanges(): void {
+    if (this.form && this.task) {
+      this.model.getUserById(this.task.userId)
+        ?.pipe(
+          tap((user) => {
+            this.form.get('title')!.setValue(this.task.title);
+            this.form.get('description')!.setValue(this.task.description);
+            this.form.get('user')!.setValue(user.login);
+          })
+        )
+        .subscribe()
 
-  editBoard(id: string, form: Board) {
+    }
+  }
+
+  editTask(form: FormGroup) {
     this.model
-      .updateBoard(id, form)
+      .updateTask(this.task.boardId!, this.task.columnId!, this.task.id!, {
+      title: form.value.title,
+      order: 1,
+      description: form.value.description,
+      userId: this.task.userId,
+      boardId: this.task.boardId!,
+      columnId: this.task.columnId!
+      })
       .pipe(
-        tap((res) => {
-          const i = this.service.boards.findIndex((board) => id === board.id);
-          this.service.boards[i].title = res.title;
-          this.service.boards[i].description = res.description;
-          this.service.isEditBoard = false;
+        tap((task) => {
+          this.editTaskFromEdit.emit(task)
         }),
       )
       .subscribe();

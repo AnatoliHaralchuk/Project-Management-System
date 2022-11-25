@@ -1,24 +1,36 @@
 @import 'src/assets/styles/constants';
 
-.board-container {
-  margin: 1rem;
-  padding: 1rem;
-  border-radius: 1rem;
+.task-container {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   background-color: $gold;
   transition: ease 0.3s;
   overflow: auto;
-  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  & .board__title {
+  width: 100%;
+  & .task__title {
     font-weight: bold;
+    margin-bottom: 0.2rem;
+  }
+  & .task__text {
+    margin-bottom: 0.2rem;
   }
 
 
-  & .board-btns {
+  & .task-btns {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+
+    & .task-user {
+      color: $bronze;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      padding-top: 0.3rem;
+    }
   }
 
   &:hover {

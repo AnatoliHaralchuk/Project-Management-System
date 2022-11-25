@@ -2,7 +2,7 @@
   <h2
     *ngIf="!isEditColumn; else edit"
     class="column-title"
-    (click)="editColumnTitle($event, column)"
+    (click)="this.isEditColumn = true;"
   >
     {{ column.title }}
   </h2>
@@ -17,9 +17,11 @@
   >
     <app-task
       class="example-box"
-      *ngFor="let task of service.tasks"
+      *ngFor="let task of tasks"
       cdkDrag
-      [column]="column"
+      [task]="task!"
+      (deleteTaskId)="deleteTask($event)"
+      (currentTask)="editTask($event)"
     ></app-task>
   </div>
   <div class="btn-container">

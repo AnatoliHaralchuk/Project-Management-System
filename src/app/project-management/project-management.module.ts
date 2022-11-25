@@ -23,6 +23,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TaskComponent } from './components/task/task.component';
 import { CreateTaskFormComponent } from './components/task/create-task-form/create-task-form.component';
 import { EditTaskFormComponent } from './components/task/edit-task-form/edit-task-form.component';
+import {MatSelectModule} from "@angular/material/select";
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -56,17 +57,18 @@ const routes: Routes = [
     CreateTaskFormComponent,
     EditTaskFormComponent,
   ],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    FormsModule,
-    DragDropModule,
-  ],
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        FormsModule,
+        DragDropModule,
+        MatSelectModule,
+    ],
   exports: [RouterModule],
 })
 export class ProjectManagementModule {}
