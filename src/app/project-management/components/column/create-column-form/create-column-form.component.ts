@@ -25,19 +25,6 @@ export class CreateColumnFormComponent implements OnInit {
     });
   }
 
-  // createBoard(form: FormGroup) {
-  //   this.model
-  //     .createBoard(form.value)
-  //     .pipe(
-  //       tap((board) => {
-  //         this.service.isCreateBoard = false;
-  //         this.service.boards.push(board);
-  //         form.reset();
-  //       }),
-  //     )
-  //     .subscribe();
-  // }
-
   createColumn(form: FormGroup) {
     this.route.params
       .pipe(
