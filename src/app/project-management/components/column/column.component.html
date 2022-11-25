@@ -15,10 +15,15 @@
     class="example-list"
     (cdkDropListDropped)="drop($event)"
   >
-    <div class="example-box" *ngFor="let task of service.tasks" cdkDrag></div>
+    <app-task
+      class="example-box"
+      *ngFor="let task of service.tasks"
+      cdkDrag
+      [column]="column"
+    ></app-task>
   </div>
   <div class="btn-container">
-    <mat-card class="task-add" (click)="this.service.isCreateTask = true">
+    <mat-card class="task-add" (click)="addTask(column)">
       <mat-icon>add</mat-icon>
       <mat-card-content> Добавить </mat-card-content>
     </mat-card>

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Board, BoardColumns } from '../../../models/management.models';
+import { BoardColumns } from '../../../models/management.models';
 import { ModelHttpService } from '../../../model-http/model-http.service';
 import { CommonService } from '../../../../core/services/common.service';
 import { mergeMap, tap } from 'rxjs';
@@ -30,34 +30,21 @@ export class EditColumnFormComponent implements OnInit {
     });
   }
 
-  // editBoard(id: string, form: Board) {
-  //   this.model
-  //     .updateBoard(id, form)
-  //     .pipe(
-  //       tap((res) => {
-  //         const i = this.service.boards.findIndex((board) => id === board.id);
-  //         this.service.boards[i].title = res.title;
-  //         this.service.boards[i].description = res.description;
-  //         this.service.isEditBoard = false;
-  //       }),
-  //     )
-  //     .subscribe();
-  // }
-
   editColumn(obj: { title: string }) {
     this.isEdit.emit(false);
-    console.log('asdasd');
-    this.route.params.pipe(
-      tap(() => {
-        const id = this.service.columns.findIndex((column) => column.title === obj.title);
-        this.service.columns[id].title = obj.title;
-      }),
-      mergeMap((params) =>
-        this.model.updateColumn(params['id'], this.column.id!, {
-          title: obj.title,
-          order: this.column.order,
+    this.route.params
+      .pipe(
+        tap(() => {
+          const id = this.service.columns.findIndex((column) => column.title === this.column.title);
+          this.service.columns[id].title = obj.title;
         }),
-      ),
-    );
+        mergeMap((params) =>
+          this.model.updateColumn(params['id'], this.column.id!, {
+            title: obj.title,
+            order: this.column.order,
+          }),
+        ),
+      )
+      .subscribe();
   }
 }

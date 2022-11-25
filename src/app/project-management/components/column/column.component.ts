@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { BoardColumns } from '../../models/management.models';
 import { ModelHttpService } from '../../model-http/model-http.service';
@@ -13,6 +13,8 @@ import { mergeMap, tap } from 'rxjs';
 })
 export class ColumnComponent implements OnInit {
   @Input() column!: BoardColumns;
+
+  @Output() curColumn: EventEmitter<BoardColumns> = new EventEmitter<BoardColumns>();
 
   isEditColumn = false;
 
@@ -65,5 +67,11 @@ export class ColumnComponent implements OnInit {
     //     mergeMap((params) => this.model.deleteColumn(params['id'], columnId)),
     //   )
     //   .subscribe();
+  }
+
+  addTask(column: BoardColumns) {
+    this.service.isCreateTask = true;
+    console.log(column);
+    this.curColumn.emit(column);
   }
 }

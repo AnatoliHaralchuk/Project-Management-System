@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModelHttpService } from '../../model-http/model-http.service';
 import { CommonService } from '../../../core/services/common.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Board } from '../../models/management.models';
+import { Board, BoardColumns } from '../../models/management.models';
 import { tap } from 'rxjs';
 
 @Component({
@@ -11,11 +11,7 @@ import { tap } from 'rxjs';
   styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent implements OnInit {
-  @Input() board!: Board;
-
-  @Input() id!: number;
-
-  @Output() curBoard: EventEmitter<Board> = new EventEmitter<Board>();
+  @Input() column!: BoardColumns;
 
   constructor(
     private model: ModelHttpService,
@@ -26,18 +22,17 @@ export class TaskComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  deleteBoard(id: string) {
+  deleteTask(id: string) {
     this.model.deleteBoard(id).subscribe();
     this.service.boards = this.service.boards.filter((board) => board.id !== id);
   }
 
-  editBoard(board: Board) {
-    this.service.isEditBoard = true;
-    this.curBoard.emit(board);
-    this.service.currentBoard = board;
+  editTask(id: string) {
+    // this.service.isEditBoard = true;
+    // this.service.currentBoard = board;
   }
 
-  toBoard(event: any, board: Board) {
+  toTask(event: any, board: BoardColumns) {
     if (!(event.target.tagName === 'MAT-ICON')) {
       this.route.params
         .pipe(
