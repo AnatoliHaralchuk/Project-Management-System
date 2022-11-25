@@ -1,6 +1,6 @@
 <section class="about-wrapper">
-  <h3 class="about-title">Основатели PMA</h3>
-  <span class="about-subtitle">Вот они, слева направо:</span>
+  <h3 class="about-title">{{ 'carusel.team' | translate}}</h3>
+  <span class="about-subtitle">{{ 'carusel.pointer' | translate}}</span>
   <div class="slider-block">
     <button mat-mini-fab color="warn" (click)="prevContent()">
       <mat-icon>keyboard_arrow_left</mat-icon>
@@ -8,27 +8,27 @@
     <div class="content-wrapper">
       <mat-card class="about-card animate__fadeInUp" *ngIf="counter === 0">
         <mat-card-title-group>
-          <mat-card-title>{{ developer.name }}</mat-card-title>
-          <mat-card-subtitle>{{ developer.subTitle }}</mat-card-subtitle>
-          <mat-card-subtitle>{{ developer.about }}</mat-card-subtitle>
+          <mat-card-title>{{ developer.name | translate}}</mat-card-title>
+          <mat-card-subtitle>{{ developer.subTitle | translate}}</mat-card-subtitle>
+          <mat-card-subtitle>{{ developer.about | translate}}</mat-card-subtitle>
           <img class="profil-foto" mat-card-xl-image src="{{ developer.img }}" />
         </mat-card-title-group>
       </mat-card>
 
       <mat-card class="about-card animate__fadeInUp" *ngIf="counter === 2">
         <mat-card-title-group>
-          <mat-card-title>{{ developer.name }}</mat-card-title>
-          <mat-card-subtitle>{{ developer.subTitle }}</mat-card-subtitle>
-          <mat-card-subtitle>{{ developer.about }}</mat-card-subtitle>
+          <mat-card-title>{{ developer.name | translate}}</mat-card-title>
+          <mat-card-subtitle>{{ developer.subTitle | translate}}</mat-card-subtitle>
+          <mat-card-subtitle>{{ developer.about | translate}}</mat-card-subtitle>
           <img class="profil-foto" mat-card-xl-image src="{{ developer.img }}" />
         </mat-card-title-group>
       </mat-card>
 
       <mat-card class="about-card animate__fadeInUp" *ngIf="counter === 1">
         <mat-card-title-group>
-          <mat-card-title>{{ developer.name }}</mat-card-title>
-          <mat-card-subtitle>{{ developer.subTitle }}</mat-card-subtitle>
-          <mat-card-subtitle>{{ developer.about }}</mat-card-subtitle>
+          <mat-card-title>{{ developer.name | translate}}</mat-card-title>
+          <mat-card-subtitle>{{ developer.subTitle | translate}}</mat-card-subtitle>
+          <mat-card-subtitle>{{ developer.about | translate}}</mat-card-subtitle>
           <img class="profil-foto" mat-card-xl-image src="{{ developer.img }}" />
         </mat-card-title-group>
       </mat-card>

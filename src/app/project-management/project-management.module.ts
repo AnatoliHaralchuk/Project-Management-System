@@ -23,10 +23,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TaskComponent } from './components/task/task.component';
 import { CreateTaskFormComponent } from './components/task/create-task-form/create-task-form.component';
 import { EditTaskFormComponent } from './components/task/edit-task-form/edit-task-form.component';
-import {MatSelectModule} from "@angular/material/select";
+import { MatSelectModule } from "@angular/material/select";
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpLoaderFactory, SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
@@ -62,28 +61,21 @@ const routes: Routes = [
     CreateTaskFormComponent,
     EditTaskFormComponent,
   ],
-    imports: [
-        RouterModule.forChild(routes),
-        CommonModule,
-        MatIconModule,
-        MatButtonModule,
-        MatCardModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        FormsModule,
-        DragDropModule,
-        MatSelectModule,
-        SharedModule,
-        HttpClientModule,
-        TranslateModule,
-        TranslateModule.forRoot({
-          loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-          }
-        })
-    ],
+  imports: [
+    RouterModule.forChild(routes),
+    CommonModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
+    DragDropModule,
+    MatSelectModule,
+    SharedModule,
+    HttpClientModule,
+    TranslateModule,
+  ],
   exports: [RouterModule],
 })
 export class ProjectManagementModule {}

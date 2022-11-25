@@ -1,25 +1,25 @@
 <div class="signup-container">
   <form class="signup-body" [formGroup]="form" (ngSubmit)="signUp(form)">
-    <h2 class="signup-title">Sign Up</h2>
+    <h2 class="signup-title">{{ 'signup.title' | translate }}</h2>
 
     <mat-form-field class="name-field" appearance="fill">
-      <mat-label>Name</mat-label>
+      <mat-label>{{ 'signup.name' | translate }}</mat-label>
       <input matInput formControlName="name" autocomplete="off" />
       <mat-error *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
-        <small *ngIf="(form.get('name')?.errors)!['required']">Please enter your name</small>
+        <small *ngIf="(form.get('name')?.errors)!['required']">{{ 'signup.req-name' | translate }}</small>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="login-field" appearance="fill">
-      <mat-label>Log in</mat-label>
+      <mat-label>{{ 'signup.login' | translate }}</mat-label>
       <input matInput formControlName="login" autocomplete="off" />
       <mat-error *ngIf="form.get('login')?.touched && form.get('login')?.invalid">
-        <small *ngIf="(form.get('login')?.errors)!['required']">Please enter a login</small>
+        <small *ngIf="(form.get('login')?.errors)!['required']">{{ 'signup.req-login' | translate }}</small>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="password-field" appearance="fill">
-      <mat-label>Password</mat-label>
+      <mat-label>{{ 'signup.pass' | translate }}</mat-label>
       <input
         #pass
         readonly
@@ -38,34 +38,32 @@
         <mat-icon>{{ hidePass ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
       <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
-        <small *ngIf="(form.get('password')?.errors)!['required']">Please enter a password</small>
+        <small *ngIf="(form.get('password')?.errors)!['required']">{{ 'signup.req-pass' | translate }}</small>
         <small
           *ngIf="
             (form.get('password')?.errors)!['minlength'] &&
             !(form.get('password')?.errors)!['required']
           "
-          >Your password isn't strong enough: at least 8 characters</small
+          >{{ 'signup.min-pass' | translate }}</small
         >
         <small
           *ngIf="
             (form.get('password')?.errors)!['mixtureCase'] &&
             !(form.get('password')?.errors)!['required']
           "
-          >Your password isn't strong enough:a mixture of both uppercase and lowercase
-          letters</small
+          >{{ 'signup.multi-pass' | translate }}</small
         >
         <small *ngIf="(form.get('password')?.errors)!['mixtureNum']"
-          >Your password isn't strong enough: a mixture of letters and numbers</small
+          >{{ 'signup.num-pass' | translate }}</small
         >
         <small *ngIf="(form.get('password')?.errors)!['inclusionSymbol']"
-          >Your password isn't strong enough: inclusion of at least one special character, e.g., ! @
-          # ?</small
+          >{{ 'signup.spec-pass' | translate }}</small
         >
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="password-field" appearance="fill">
-      <mat-label>Confirm password</mat-label>
+      <mat-label>{{ 'signup.confirm' | translate }}</mat-label>
       <input
         #confirmPass
         readonly
@@ -87,14 +85,14 @@
         *ngIf="form.get('confirmpassword')?.touched && form.get('confirmpassword')?.invalid"
       >
         <small *ngIf="(form.get('confirmpassword')?.errors)!['required']"
-          >Please enter a password</small
+          >{{ 'signup.pass' | translate }}</small
         >
         <small
           *ngIf="
             (form.get('confirmpassword')?.errors)!['confirm'] &&
             !(form.get('confirmpassword')?.errors)!['required']
           "
-          >Password don't match</small
+          >{{ 'signup.not' | translate }}</small
         >
       </mat-error>
     </mat-form-field>
@@ -105,7 +103,7 @@
       mat-stroked-button
       color="primary"
     >
-      Sign up
+    {{ 'signup.btn' | translate }}
     </button>
   </form>
 </div>

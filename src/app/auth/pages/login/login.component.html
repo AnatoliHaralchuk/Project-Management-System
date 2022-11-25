@@ -1,16 +1,16 @@
 <div class="login-container">
   <form class="login-body" [formGroup]="form" (ngSubmit)="createToken(form)">
-    <h2 class="login-title">{{ 'header.exit' | translate }}</h2>
+    <h2 class="login-title">{{ 'login.title' | translate }}</h2>
     <mat-form-field class="login-field" appearance="fill">
-      <mat-label>{{ 'login.title' | translate }}</mat-label>
+      <mat-label>{{ 'login.login' | translate }}</mat-label>
       <input matInput formControlName="login" autocomplete="off" />
       <mat-error *ngIf="form.get('login')?.touched && form.get('login')?.invalid">
-        <small *ngIf="(form.get('login')?.errors)!['required']">Please enter a login</small>
+        <small *ngIf="(form.get('login')?.errors)!['required']">{{ 'login.req-login' | translate }}</small>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="password-field" appearance="fill">
-      <mat-label>Password</mat-label>
+      <mat-label>{{ 'login.pass' | translate }}</mat-label>
       <input
         readonly
         onfocus="removeAttribute('readonly')"
@@ -28,28 +28,26 @@
         <mat-icon>{{ hidePass ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
       <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
-        <small *ngIf="(form.get('password')?.errors)!['required']">Please enter a password</small>
+        <small *ngIf="(form.get('password')?.errors)!['required']">{{ 'login.req-pass' | translate }}</small>
         <small
           *ngIf="
             (form.get('password')?.errors)!['minlength'] &&
             !(form.get('password')?.errors)!['required']
           "
-          >Your password isn't strong enough: at least 8 characters</small
+          >{{ 'login.min-pass' | translate }}</small
         >
         <small
           *ngIf="
             (form.get('password')?.errors)!['mixtureCase'] &&
             !(form.get('password')?.errors)!['required']
           "
-          >Your password isn't strong enough:a mixture of both uppercase and lowercase
-          letters</small
+          >{{ 'login.multi-pass' | translate }}</small
         >
         <small *ngIf="(form.get('password')?.errors)!['mixtureNum']"
-          >Your password isn't strong enough: a mixture of letters and numbers</small
+          >{{ 'login.num-pass' | translate }}</small
         >
         <small *ngIf="(form.get('password')?.errors)!['inclusionSymbol']"
-          >Your password isn't strong enough: inclusion of at least one special character, e.g., ! @
-          # ?</small
+          >{{ 'login.spec-pass' | translate }}</small
         >
       </mat-error>
     </mat-form-field>
@@ -61,7 +59,7 @@
       mat-stroked-button
       color="primary"
     >
-      Login
+    {{ 'login.btn' | translate }}
     </button>
   </form>
 </div>

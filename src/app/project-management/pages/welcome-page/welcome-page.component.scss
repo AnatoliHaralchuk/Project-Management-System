@@ -133,10 +133,6 @@ blockquote cite {
   width: 85%;
   text-align: justify;
   @include font(18px, #474C4F, 'Roboto', 400);
-  .link {
-    cursor: pointer;
-    color: $bronze;
-    font-weight: 700;
-  }
 }
+
 

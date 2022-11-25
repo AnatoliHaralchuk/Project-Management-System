@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
   constructor(
     private data: DataService,
     private translateService: TranslateService
-  ) { }
+  ) { 
+    this.translateService.use(this.data.lang!) 
+  }
 
   title = 'Project-Management-System';
 

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpLoaderFactory } from './shared/shared.module';
 
 const INTERCEPTOR_ADDAPIURL: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -31,6 +32,13 @@ const INTERCEPTOR_ADDAPIURL: Provider = {
     ProjectManagementModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   exports: [
     CommonModule,

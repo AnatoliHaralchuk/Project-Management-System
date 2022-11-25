@@ -8,7 +8,7 @@ export class DataService implements OnInit {
 
   constructor(private translateService: TranslateService) { }
 
-  lang: string | null = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'ru';
+  lang: string = localStorage.getItem('lang') ? localStorage.getItem('lang')! : 'ru';
 
   setLanguage(languageCode: string) {
     this.translateService.use(languageCode);

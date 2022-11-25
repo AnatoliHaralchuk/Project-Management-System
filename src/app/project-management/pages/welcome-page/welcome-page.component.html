@@ -8,7 +8,7 @@
     {{ 'welcome.subtitle' | translate }}
   </h4>
   <p class="welcome__text" [innerHTML]="'welcome.text' | translate"></p>
-  <button class="welcome__btn">{{ 'welcome.btn' | translate }}</button>
+  <button class="welcome__btn" routerLink="/main/board">{{ 'welcome.btn' | translate }}</button>
   <app-carusel></app-carusel>
   <h3 class="welcome__info">{{ 'welcome.adv' | translate }}</h3>
   <div class="info">
