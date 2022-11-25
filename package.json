@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "lintfix": "ng lint --fix"
+    "lintfix": "ng lint --fix",
+    "update-locale": "ngx-translate-extract -i ./src -o src/assets/locale/*.json --sort --format namespaced-json"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,8 @@
     "@ngrx/router-store": "^14.3.2",
     "@ngrx/store": "^14.3.2",
     "@ngrx/store-devtools": "^14.3.2",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "prettier-plugin-multiline-arrays": "^1.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

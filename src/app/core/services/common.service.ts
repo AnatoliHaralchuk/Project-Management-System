@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Board, BoardColumns, BoardTasks } from '../../project-management/models/management.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommonService {
-  constructor() {}
+  constructor(
+    private translateService: TranslateService
+  ) {}
 
   isCreateBoard = false;
 
@@ -28,4 +31,12 @@ export class CommonService {
   taskTitle: string[] = [];
 
   currentBoard!: Board;
+
+  lang: string | null = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'ru';
+
+  setLanguage(languageCode: string) {
+    this.translateService.use(languageCode);
+    this.lang = languageCode;
+    localStorage.setItem('lang', this.lang);
+  }
 }

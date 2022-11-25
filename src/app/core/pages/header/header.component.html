@@ -1,12 +1,12 @@
 <header class="header">
   <div class="header__container">
     <div class="header__langs">
-      <div class="header__langs-btn">Русский</div>
-      <div class="header__langs-btn">English</div> 
-      <div class="header__langs-btn">Espaniola</div> 
-      <div class="header__langs-btn-short">Ру</div>
-      <div class="header__langs-btn-short">En</div>
-      <div class="header__langs-btn-short">En</div>
+      <div class="header__langs-btn" (click)="commonService.setLanguage('ru')">Русский</div>
+      <div class="header__langs-btn" (click)="commonService.setLanguage('en')">English</div> 
+      <div class="header__langs-btn" (click)="commonService.setLanguage('sp')">Italiano</div> 
+      <div class="header__langs-btn-short" (click)="commonService.setLanguage('ru')">Ру</div>
+      <div class="header__langs-btn-short" (click)="commonService.setLanguage('en')">En</div>
+      <div class="header__langs-btn-short" (click)="commonService.setLanguage('sp')">It</div>
     </div>
     <div class="header__logo">
       <span class="header__logo-text">P</span>
