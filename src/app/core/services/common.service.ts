@@ -8,7 +8,7 @@ import {User} from "../../auth/models/auth.models";
 })
 export class CommonService {
   constructor(
-    private translateService: TranslateService
+    
   ) {}
 
   isCreateBoard = false;
@@ -32,14 +32,6 @@ export class CommonService {
   taskTitle: string[] = [];
 
   currentBoard!: Board;
-
-  lang: string | null = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'ru';
-
-  setLanguage(languageCode: string) {
-    this.translateService.use(languageCode);
-    this.lang = languageCode;
-    localStorage.setItem('lang', this.lang);
-  }
 
   allUsers: User[] = [];
 

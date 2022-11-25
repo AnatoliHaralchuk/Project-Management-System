@@ -1,8 +1,8 @@
 <div class="login-container">
   <form class="login-body" [formGroup]="form" (ngSubmit)="createToken(form)">
-    <h2 class="login-title">Log in</h2>
+    <h2 class="login-title">{{ 'header.exit' | translate }}</h2>
     <mat-form-field class="login-field" appearance="fill">
-      <mat-label>Log in</mat-label>
+      <mat-label>{{ 'login.title' | translate }}</mat-label>
       <input matInput formControlName="login" autocomplete="off" />
       <mat-error *ngIf="form.get('login')?.touched && form.get('login')?.invalid">
         <small *ngIf="(form.get('login')?.errors)!['required']">Please enter a login</small>

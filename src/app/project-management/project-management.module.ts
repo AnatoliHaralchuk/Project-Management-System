@@ -24,6 +24,10 @@ import { TaskComponent } from './components/task/task.component';
 import { CreateTaskFormComponent } from './components/task/create-task-form/create-task-form.component';
 import { EditTaskFormComponent } from './components/task/edit-task-form/edit-task-form.component';
 import {MatSelectModule} from "@angular/material/select";
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpLoaderFactory, SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -39,6 +43,7 @@ const routes: Routes = [
     ],
   },
 ];
+
 @NgModule({
   declarations: [
     WelcomePageComponent,
@@ -68,6 +73,16 @@ const routes: Routes = [
         FormsModule,
         DragDropModule,
         MatSelectModule,
+        SharedModule,
+        HttpClientModule,
+        TranslateModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+          }
+        })
     ],
   exports: [RouterModule],
 })

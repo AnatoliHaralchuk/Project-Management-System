@@ -43,6 +43,9 @@
                 @media (max-width: 519.9px) {
                     display: none;
                 }
+                &.active {
+                    box-shadow: $bronze-shadow;
+                }
             }
             .header__langs-btn-short {
                 @include btn(40px, 40px, 16px);
@@ -50,6 +53,9 @@
                 display: none;
                 @media (max-width: 519.9px) {
                     display: flex;
+                }
+                &.active {
+                    box-shadow: $bronze-shadow;
                 }
             }
         }

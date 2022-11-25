@@ -20,10 +20,6 @@ const INTERCEPTOR_ADDAPIURL: Provider = {
   multi: true,
 };
 
-function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -35,19 +31,12 @@ function HttpLoaderFactory(http: HttpClient) {
     ProjectManagementModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
   ],
   exports: [
     CommonModule,
     TranslateModule
   ],
-  providers: [INTERCEPTOR_ADDAPIURL],
+  // providers: [INTERCEPTOR_ADDAPIURL],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
