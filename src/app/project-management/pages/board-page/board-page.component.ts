@@ -3,7 +3,7 @@ import { Subscription, tap } from 'rxjs';
 import { ModelHttpService } from '../../model-http/model-http.service';
 import { CommonService } from '../../../core/services/common.service';
 import { Board } from '../../models/management.models';
-import { DataService } from 'src/app/shared/services/data.service';
+import { DataService } from '../../../shared/services/data.service';
 
 @Component({
   selector: 'app-board-page',
@@ -11,7 +11,11 @@ import { DataService } from 'src/app/shared/services/data.service';
   styleUrls: ['./board-page.component.scss'],
 })
 export class BoardPageComponent implements OnInit {
-  constructor(private model: ModelHttpService, public service: CommonService, public data: DataService) {}
+  constructor(
+    private model: ModelHttpService,
+    public service: CommonService,
+    public data: DataService,
+  ) {}
 
   sub!: Subscription;
 

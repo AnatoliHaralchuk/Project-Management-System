@@ -48,7 +48,7 @@ export class ColumnComponent implements OnInit, OnChanges {
       .pipe(
         mergeMap((params) => this.model.getAllTasks(params['id'], this.column.id!)),
         tap((tasks) => {
-          const t = tasks.sort((a,b) => a.order! - b.order!)
+          const t = tasks.sort((a, b) => a.order! - b.order!);
           if (!this.tasks.length) {
             this.tasks = this.tasks.concat(t);
           }
@@ -85,16 +85,18 @@ export class ColumnComponent implements OnInit, OnChanges {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       for (let i = 0; i < event.container.data.length; i++) {
-        let task = event.container.data[i]
+        let task = event.container.data[i];
         if (i + 1 !== task.order) {
-          this.model.updateTask(task.boardId!, task.columnId!,task.id!, {
-            title: task.title,
-            order: i + 1,
-            description: task.description,
-            userId: task.userId,
-            boardId: task.boardId,
-            columnId: task.columnId,
-          }).subscribe()
+          this.model
+            .updateTask(task.boardId!, task.columnId!, task.id!, {
+              title: task.title,
+              order: i + 1,
+              description: task.description,
+              userId: task.userId,
+              boardId: task.boardId,
+              columnId: task.columnId,
+            })
+            .subscribe();
         }
       }
     } else {
@@ -104,30 +106,37 @@ export class ColumnComponent implements OnInit, OnChanges {
         event.previousIndex,
         event.currentIndex,
       );
+
       for (let i = 0; i < event.container.data.length; i++) {
-        let task = event.container.data[i]
-        if (i + 1 !== task.order) {
-          this.model.updateTask(task.boardId!, task.columnId!,task.id!, {
-            title: task.title,
-            order: i + 1,
-            description: task.description,
-            userId: task.userId,
-            boardId: task.boardId,
-            columnId: this.column.id,
-          }).subscribe()
+        let task = event.container.data[i];
+        console.log(i + 1, task.order);
+        if (i + 1 !== task.order || task.columnId !== this.column.id) {
+          this.model
+            .updateTask(task.boardId!, task.columnId!, task.id!, {
+              title: task.title,
+              order: i + 1,
+              description: task.description,
+              userId: task.userId,
+              boardId: task.boardId,
+              columnId: this.column.id,
+            })
+            .subscribe();
         }
       }
       for (let i = 0; i < event.previousContainer.data.length; i++) {
-        let task = event.previousContainer.data[i]
-        if (i + 1 !== task.order) {
-          this.model.updateTask(task.boardId!, task.columnId!,task.id!, {
-            title: task.title,
-            order: i + 1,
-            description: task.description,
-            userId: task.userId,
-            boardId: task.boardId,
-            columnId: task.columnId!,
-          }).subscribe()
+        let task = event.previousContainer.data[i];
+        console.log(i + 1, task.order);
+        if (i + 1 !== task.order || task.columnId !== this.column.id) {
+          this.model
+            .updateTask(task.boardId!, task.columnId!, task.id!, {
+              title: task.title,
+              order: i + 1,
+              description: task.description,
+              userId: task.userId,
+              boardId: task.boardId,
+              columnId: task.columnId!,
+            })
+            .subscribe();
         }
       }
     }
