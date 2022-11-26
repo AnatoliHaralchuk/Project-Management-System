@@ -9,6 +9,8 @@ export class DataService {
     this.translateService.use(this.lang!);
   }
 
+  filterText: string = '';
+
   lang: string = localStorage.getItem('lang') ? localStorage.getItem('lang')! : 'ru';
 
   setLanguage(languageCode: string) {

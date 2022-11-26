@@ -57,5 +57,28 @@
     "confirm": "Confirm password",
     "not": "Password don't match",
     "btn": "Sign up"
+  },
+  "main": {
+    "boards": "boards",
+    "name": "Board name",
+    "btn-add": "Add"
+  },
+  "board": {
+    "create": "Create new board",
+    "task": "Create new task",
+    "edit": "Edit board",
+    "column": "Create new columnу",
+    "delete": "Are you sure to delete?",
+    "title": "Please enter a title",
+    "desc": "Please enter a description",
+    "desc-min": "Your description isn't strong enough: at least 10 characters",
+    "create-btn": "Create",
+    "cancel-btn": "Cancel",
+    "title-name": "Title",
+    "desc-name": "Description",
+    "delete-btn": "Delete",
+    "edit-btn": "Edit",
+    "user-name": "User",
+    "user": "Please choice a user"
   }
 }

@@ -1,6 +1,6 @@
 <div class="form-container" *ngIf="service.isDeleteForm">
   <div class="form-body">
-    <h2 class="form-title">Are you sure to delete</h2>
+    <h2 class="form-title">{{ "board.delete" | translate }}</h2>
 
     <div class="btn-container">
       <button
@@ -10,10 +10,10 @@
         color="primary"
         (click)="service.isDeleteForm = false"
       >
-        Cancel
+      {{ "board.cancel-btn" | translate }}
       </button>
       <button (click)="checkDelete()" class="form-btn" mat-stroked-button color="warn">
-        Delete
+        {{ "board.delete-btn" | translate }}
       </button>
     </div>
   </div>

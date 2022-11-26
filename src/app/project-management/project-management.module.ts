@@ -76,7 +76,7 @@ const routes: Routes = [
     MatSelectModule,
     SharedModule,
     HttpClientModule,
-    TranslateModule,
+    TranslateModule
   ],
   exports: [RouterModule],
 })

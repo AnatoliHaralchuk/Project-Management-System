@@ -1,10 +1,10 @@
 <div class="main-wrapper">
-  <div class="board-header">
-    <h1>BOARDS</h1>
+  <div class="board-header" *ngIf="router.url === '/main/board'">
+    <h1>{{ "main.boards" | translate | uppercase }}</h1>
 
     <mat-form-field class="example-full-width">
-      <mat-label style="font-size: 1.5rem">Board name</mat-label>
-      <input #Iboard style="font-size: 1.5rem" matInput placeholder="" value="" />
+      <mat-label style="font-size: 1.5rem">{{ "main.name" | translate }}</mat-label>
+      <input #Iboard style="font-size: 1.5rem" matInput placeholder="" value="" [(ngModel)]="data.filterText"/>
     </mat-form-field>
 
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">

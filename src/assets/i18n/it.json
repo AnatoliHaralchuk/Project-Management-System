@@ -38,11 +38,11 @@
         "req-pass": "Per favore inserire una password",
         "min-pass": "La password deve contenere almeno 8 caratteri",
         "multi-pass": "La password deve contenere lettere maiuscole e minuscole",
-        "num-pass": "La password deve contenere numeri", 
+        "num-pass": "La password deve contenere numeri",
         "spec-pass": "La password deve contenere caratteri speciali: ! @ # ?",
         "btn": "Entrare"
-      },
-      "signup": {
+    },
+    "signup": {
         "title": "Registrati",
         "login": "Accedere",
         "name": "Nome",
@@ -52,10 +52,33 @@
         "req-pass": "Per favore inserire una password",
         "min-pass": "La password deve contenere almeno 8 caratteri",
         "multi-pass": "La password deve contenere lettere maiuscole e minuscole",
-        "num-pass": "La password deve contenere numeri", 
+        "num-pass": "La password deve contenere numeri",
         "spec-pass": "La password deve contenere caratteri speciali: ! @ # ?",
         "confirm": "Conferma password",
         "not": "Le passwords non corrispondono",
         "btn": "Registrati"
+    },
+    "main": {
+        "boards": "bordo",
+        "name": "Nome del consiglio",
+        "btn-add": "Aggiungere"
+    },
+    "board": {
+        "create": "Crea nuova scheda",
+        "task": "Crea nuova attività",
+        "edit": "Modifica lavagna",
+        "column": "Crea nuova colonna",
+        "delete": "Sei sicuro di cancellare?",
+        "title": "Inserisci un titolo",
+        "desc": "Inserisci una descrizione",
+        "desc-min": "La tua descrizione non è abbastanza forte: almeno 10 caratteri",
+        "create-btn": "Creare",
+        "cancel-btn": "Annullare",
+        "title-name": "Titolo",
+        "desc-name": "Descrizione",
+        "delete-btn": "Eliminare",
+        "edit-btn": "Modifica",
+        "user-name": "Utente",
+        "user": "Si prega di scegliere un utente"
       }
 }

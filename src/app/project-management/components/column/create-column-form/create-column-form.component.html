@@ -1,12 +1,12 @@
 <div class="form-container" *ngIf="service.isCreateColumn">
   <form class="form-body" [formGroup]="form" (ngSubmit)="createColumn(form)">
-    <h2 class="form-title">Create new column</h2>
+    <h2 class="form-title">{{ "board.column" | translate }}</h2>
 
     <mat-form-field class="title-field" appearance="fill">
-      <mat-label>title</mat-label>
+      <mat-label>{{ "board.title-name" | translate }}</mat-label>
       <input matInput formControlName="title" autocomplete="off" />
       <mat-error *ngIf="form.get('title')?.touched && form.get('title')?.invalid">
-        <small *ngIf="(form.get('title')?.errors)!['required']">Please enter a title</small>
+        <small *ngIf="(form.get('title')?.errors)!['required']">{{ "board.title" | translate }}</small>
       </mat-error>
     </mat-form-field>
 
@@ -18,7 +18,7 @@
         color="primary"
         (click)="service.isCreateColumn = false; form.reset()"
       >
-        Cancel
+      {{ "board.cancel-btn" | translate }}
       </button>
       <button
         class="form-btn"
@@ -27,7 +27,7 @@
         mat-stroked-button
         color="primary"
       >
-        Create
+      {{ "board.create-btn" | translate }}
       </button>
     </div>
   </form>
