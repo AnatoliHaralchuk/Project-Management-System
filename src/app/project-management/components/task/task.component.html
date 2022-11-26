@@ -1,4 +1,4 @@
-<mat-card class="task-container" >
+<mat-card class="task-container">
   <p class="task__title">{{ task.title }}</p>
   <p class="task__text">{{ task.description }}</p>
   <div class="task-btns">
@@ -11,14 +11,12 @@
       <mat-icon style="color: #3232eb">edit</mat-icon>
     </button>
 
-    <div
-      class="task-user"
-    >
-      {{userName}}
+    <div class="task-user">
+      {{ userName }}
     </div>
 
     <button
-      (click)="deleteTask(task.id!)"
+      (click)="isDeleteTask(task.id!)"
       mat-icon-button
       class="example-icon"
       aria-label="Example icon-button with menu icon"

@@ -32,3 +32,10 @@ export interface BoardFiles {
   filename: string;
   fileSize: number;
 }
+
+export interface DeleteData {
+  idBoard: string;
+  idColumn: string;
+  idTask: string;
+  idUser: string;
+}

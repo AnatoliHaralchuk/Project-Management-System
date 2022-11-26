@@ -1,9 +1,5 @@
 <div class="example-container">
-  <h2
-    *ngIf="!isEditColumn; else edit"
-    class="column-title"
-    (click)="this.isEditColumn = true;"
-  >
+  <h2 *ngIf="!isEditColumn; else edit" class="column-title" (click)="this.isEditColumn = true">
     {{ column.title }}
   </h2>
   <ng-template #edit>
@@ -11,7 +7,7 @@
   </ng-template>
   <div
     cdkDropList
-    [cdkDropListData]="service.taskTitle"
+    [cdkDropListData]="tasks"
     class="example-list"
     (cdkDropListDropped)="drop($event)"
   >
@@ -20,7 +16,6 @@
       *ngFor="let task of tasks"
       cdkDrag
       [task]="task!"
-      (deleteTaskId)="deleteTask($event)"
       (currentTask)="editTask($event)"
     ></app-task>
   </div>
@@ -30,7 +25,7 @@
       <mat-card-content> Добавить </mat-card-content>
     </mat-card>
     <button
-      (click)="deleteColumn(column.id!)"
+      (click)="isDeleteColumn(column.id!)"
       mat-icon-button
       class="example-icon"
       aria-label="Example icon-button with menu icon"

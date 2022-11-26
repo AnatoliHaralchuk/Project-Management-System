@@ -26,9 +26,14 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  deleteBoard(id: string) {
-    this.model.deleteBoard(id).subscribe();
-    this.service.boards = this.service.boards.filter((board) => board.id !== id);
+  isDeleteBoard(id: string) {
+    this.service.isDeleteForm = true;
+    this.service.deleteData = {
+      idBoard: id,
+      idColumn: '',
+      idTask: '',
+      idUser: '',
+    };
   }
 
   editBoard(board: Board) {

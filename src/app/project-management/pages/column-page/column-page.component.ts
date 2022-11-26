@@ -4,7 +4,7 @@ import { CommonService } from '../../../core/services/common.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { mergeMap, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import {BoardColumns, BoardTasks} from '../../models/management.models';
+import { BoardColumns, BoardTasks } from '../../models/management.models';
 
 @Component({
   selector: 'app-column-page',
@@ -13,9 +13,14 @@ import {BoardColumns, BoardTasks} from '../../models/management.models';
 })
 export class ColumnPageComponent implements OnInit {
   curColumn!: BoardColumns;
+
   curTask!: BoardTasks;
+
   currentTask!: BoardTasks;
-  currentTaskFromEdit!:BoardTasks
+
+  currentTaskFromEdit!: BoardTasks;
+
+  deleteTaskId!: string;
 
   constructor(
     private model: ModelHttpService,
@@ -54,5 +59,9 @@ export class ColumnPageComponent implements OnInit {
 
   editTaskFromEdit(event: BoardTasks) {
     this.currentTaskFromEdit = event;
+  }
+
+  sentDeleteTaskId(event: string) {
+    this.deleteTaskId = event;
   }
 }

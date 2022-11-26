@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from 'src/app/auth/services/auth.service';
-import { CommonService } from 'src/app/core/services/common.service';
-import { DataService } from 'src/app/shared/services/data.service';
+import { Component } from '@angular/core';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-welcome-page',
@@ -11,6 +7,5 @@ import { DataService } from 'src/app/shared/services/data.service';
   styleUrls: ['./welcome-page.component.scss'],
 })
 export class WelcomePageComponent {
-  constructor(public auth: AuthService) { }
-  
+  constructor(public auth: AuthService) {}
 }

@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from '../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
@@ -45,7 +44,7 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     SharedModule,
     TranslateModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   exports: [RouterModule],
 })

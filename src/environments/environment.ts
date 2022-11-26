@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
 
-  locales: ['en', 'ru'],
+  locales: [
+    'en',
+    'ru',
+  ],
   defaultLocale: 'en',
 };
 

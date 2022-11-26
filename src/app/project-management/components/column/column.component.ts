@@ -1,6 +1,14 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import {BoardColumns, BoardTasks} from '../../models/management.models';
+import { BoardColumns, BoardTasks } from '../../models/management.models';
 import { ModelHttpService } from '../../model-http/model-http.service';
 import { CommonService } from '../../../core/services/common.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,6 +23,8 @@ export class ColumnComponent implements OnInit, OnChanges {
   @Input() column!: BoardColumns;
 
   @Input() curTask!: BoardTasks;
+
+  @Input() deleteTaskId!: string;
 
   @Input() currentTaskFromEdit!: BoardTasks;
 
@@ -39,27 +49,38 @@ export class ColumnComponent implements OnInit, OnChanges {
         mergeMap((params) => this.model.getAllTasks(params['id'], this.column.id!)),
         tap((tasks) => {
           if (!this.tasks.length) {
-            this.tasks = this.tasks.concat(tasks)
-          };
-        })
+            this.tasks = this.tasks.concat(tasks);
+          }
+        }),
       )
-      .subscribe()
+      .subscribe();
   }
 
-  ngOnChanges(): void {
-    if (this.curTask){
-      if (this.curTask.columnId === this.column.id) this.tasks.push(this.curTask)
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['deleteTaskId']) {
+      if (this.deleteTaskId) {
+        const id: number = this.tasks.findIndex((task) => task.id === this.deleteTaskId);
+        if (id !== -1) {
+          this.tasks.splice(id, 1);
+        }
+      }
     }
-    if (this.currentTaskFromEdit){
-      const id: number = this.tasks.findIndex((task) => task.id === this.currentTaskFromEdit.id)
-      // console.log(this.tasks, id)
-      if (id !== -1) {
-        this.tasks.splice(id,1,this.currentTaskFromEdit)
+    if (changes['curTask']) {
+      if (this.curTask) {
+        if (this.curTask.columnId === this.column.id) this.tasks.push(this.curTask);
+      }
+    }
+    if (changes['currentTaskFromEdit']) {
+      if (this.currentTaskFromEdit) {
+        const id: number = this.tasks.findIndex((task) => task.id === this.currentTaskFromEdit.id);
+        if (id !== -1) {
+          this.tasks.splice(id, 1, this.currentTaskFromEdit);
+        }
       }
     }
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<BoardTasks[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -72,16 +93,19 @@ export class ColumnComponent implements OnInit, OnChanges {
     }
   }
 
-  deleteColumn(columnId: string) {
+  isDeleteColumn(idColumn: string) {
+    this.service.isDeleteForm = true;
     this.route.params
       .pipe(
         tap(
-          () =>
-            (this.service.columns = this.service.columns.filter(
-              (column) => column.id !== columnId,
-            )),
+          (params) =>
+            (this.service.deleteData = {
+              idBoard: params['id'],
+              idColumn: idColumn,
+              idTask: '',
+              idUser: '',
+            }),
         ),
-        mergeMap((params) => this.model.deleteColumn(params['id'], columnId)),
       )
       .subscribe();
   }
@@ -89,22 +113,18 @@ export class ColumnComponent implements OnInit, OnChanges {
   addTask(column: BoardColumns) {
     this.service.isCreateTask = true;
     this.curColumn.emit(column);
-    this.model.getAllUsers()
-      .subscribe((users) => {
-        if (!this.service.allUsers.length && users !== null)
-        this.service.allUsers = this.service.allUsers.concat(users)
-      })
+    this.model.getAllUsers().subscribe((users) => {
+      if (!this.service.allUsers.length && users !== null)
+        this.service.allUsers = this.service.allUsers.concat(users);
+    });
   }
-
-
 
   deleteTask(event: string) {
     const id: number = this.tasks.findIndex((task) => task.id === event);
-    this.tasks.splice(id, 1)
+    this.tasks.splice(id, 1);
   }
 
   editTask(event: BoardTasks) {
     this.currentTask.emit(event);
-
   }
 }

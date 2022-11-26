@@ -5,7 +5,6 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -18,7 +17,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
   ],
   exports: [LayoutComponent],
 })

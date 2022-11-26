@@ -29,8 +29,10 @@
 
     <mat-form-field appearance="fill">
       <mat-label>User</mat-label>
-      <mat-select formControlName = "user">
-        <mat-option *ngFor="let user of this.service.allUsers" [value]="user.login">{{user.login}}</mat-option>
+      <mat-select formControlName="user">
+        <mat-option *ngFor="let user of this.service.allUsers" [value]="user.login">{{
+          user.login
+        }}</mat-option>
       </mat-select>
       <mat-error *ngIf="form.get('user')?.touched && form.get('user')?.invalid">
         <small *ngIf="(form.get('user')?.errors)!['required']">Please choice a user</small>

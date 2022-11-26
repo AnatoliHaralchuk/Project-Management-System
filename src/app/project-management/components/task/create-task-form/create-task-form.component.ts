@@ -1,11 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModelHttpService } from '../../../model-http/model-http.service';
 import { CommonService } from '../../../../core/services/common.service';
 import { mergeMap, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import {BoardColumns, BoardTasks} from '../../../models/management.models';
-import {User} from "../../../../auth/models/auth.models";
+import { BoardColumns, BoardTasks } from '../../../models/management.models';
 
 @Component({
   selector: 'app-create-task-form',
@@ -15,7 +14,7 @@ import {User} from "../../../../auth/models/auth.models";
 export class CreateTaskFormComponent implements OnInit {
   @Input() curColumn!: BoardColumns;
 
-  @Output() curTask: EventEmitter<BoardTasks> = new EventEmitter<BoardTasks>()
+  @Output() curTask: EventEmitter<BoardTasks> = new EventEmitter<BoardTasks>();
 
   form!: FormGroup;
 
@@ -34,26 +33,29 @@ export class CreateTaskFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(10),
       ]),
-      user: new FormControl('', [Validators.required])
+      user: new FormControl('', [Validators.required]),
     });
   }
 
   createTask(form: FormGroup) {
-    const userId: any = this.service.allUsers.find((user) => user.login === form.value.user)
+    const userId: any = this.service.allUsers.find((user) => user.login === form.value.user);
     this.service.isCreateTask = false;
     this.route.params
       .pipe(
-        tap((params) => this.boardId = params['id']),
-        mergeMap((params) => this.model.createTask(params['id'], this.curColumn.id!,{
-          title: form.value.title,
-          description: form.value.description,
-          userId: userId.id
-        })),
+        tap((params) => (this.boardId = params['id'])),
+        mergeMap((params) =>
+          this.model.createTask(params['id'], this.curColumn.id!, {
+            title: form.value.title,
+            description: form.value.description,
+            userId: userId.id,
+          }),
+        ),
         mergeMap((task) => this.model.getTaskById(this.boardId, this.curColumn.id!, task.id!)),
         tap((task) => {
-          this.curTask.emit(task)
-        })
+          this.curTask.emit(task);
+        }),
       )
-      .subscribe()
+      .subscribe();
+    this.form.reset();
   }
 }

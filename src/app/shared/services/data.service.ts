@@ -1,12 +1,13 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class DataService implements OnInit {
-
-  constructor(private translateService: TranslateService) { }
+export class DataService {
+  constructor(private translateService: TranslateService) {
+    this.translateService.use(this.lang!);
+  }
 
   lang: string = localStorage.getItem('lang') ? localStorage.getItem('lang')! : 'ru';
 
@@ -14,9 +15,5 @@ export class DataService implements OnInit {
     this.translateService.use(languageCode);
     this.lang = languageCode;
     localStorage.setItem('lang', this.lang);
-  }
-
-  ngOnInit() {
-    this.translateService.use(this.lang!);
   }
 }

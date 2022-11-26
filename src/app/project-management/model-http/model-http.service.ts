@@ -205,12 +205,14 @@ export class ModelHttpService {
 
   // START TASKS//////////////////////////////////////////////////
   getAllTasks(boardId: string, columnId: string): Observable<Array<BoardTasks>> {
-    return this.http.get<Array<BoardTasks>>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks`).pipe(
-      catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем');
-        return EMPTY;
-      }),
-    );
+    return this.http
+      .get<Array<BoardTasks>>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks`)
+      .pipe(
+        catchError((err) => {
+          if (err.status === 404) console.log('что-то делаем');
+          return EMPTY;
+        }),
+      );
   }
 
   createTask(boardId: string, columnId: string, task: Task): Observable<BoardTasks> {
@@ -229,21 +231,25 @@ export class ModelHttpService {
   }
 
   getTaskById(boardId: string, columnId: string, taskId: string): Observable<BoardTasks> {
-    return this.http.get<BoardTasks>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks/${taskId}`).pipe(
-      catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем в случае ошибки');
-        return EMPTY;
-      }),
-    );
+    return this.http
+      .get<BoardTasks>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks/${taskId}`)
+      .pipe(
+        catchError((err) => {
+          if (err.status === 404) console.log('что-то делаем в случае ошибки');
+          return EMPTY;
+        }),
+      );
   }
 
   deleteTask(boardId: string, columnId: string, taskId: string): Observable<void> {
-    return this.http.delete<void>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks/${taskId}`).pipe(
-      catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем в случае ошибки');
-        return EMPTY;
-      }),
-    );
+    return this.http
+      .delete<void>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks/${taskId}`)
+      .pipe(
+        catchError((err) => {
+          if (err.status === 404) console.log('что-то делаем в случае ошибки');
+          return EMPTY;
+        }),
+      );
   }
 
   updateTask(

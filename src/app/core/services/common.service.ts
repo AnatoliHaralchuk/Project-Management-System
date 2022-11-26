@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { Board, BoardColumns, BoardTasks } from '../../project-management/models/management.models';
-import {User} from "../../auth/models/auth.models";
+import { Board, BoardColumns, DeleteData } from '../../project-management/models/management.models';
+import { User } from '../../auth/models/auth.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommonService {
-  constructor(
-    
-  ) {}
+  constructor() {}
+
+  isDeleteForm = false;
+
+  isDeleteFormTask = false;
+
+  deleteData: DeleteData = {
+    idBoard: '',
+    idColumn: '',
+    idTask: '',
+    idUser: '',
+  };
 
   isCreateBoard = false;
 
@@ -27,12 +35,7 @@ export class CommonService {
 
   columns: BoardColumns[] = [];
 
-  tasks: BoardTasks[] = [];
-
-  taskTitle: string[] = [];
-
   currentBoard!: Board;
 
   allUsers: User[] = [];
-
 }

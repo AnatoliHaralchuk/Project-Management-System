@@ -1,7 +1,7 @@
 import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
@@ -10,9 +10,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiUrlInterceptor } from './apiUrl.interceptor';
 import { CommonModule } from '@angular/common';
-import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
 import { HttpLoaderFactory } from './shared/shared.module';
 
 const INTERCEPTOR_ADDAPIURL: Provider = {
@@ -36,15 +35,15 @@ const INTERCEPTOR_ADDAPIURL: Provider = {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
   exports: [
     CommonModule,
-    TranslateModule
+    TranslateModule,
   ],
   providers: [INTERCEPTOR_ADDAPIURL],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

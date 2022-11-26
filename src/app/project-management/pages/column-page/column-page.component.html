@@ -7,7 +7,6 @@
     class="example-list column-container"
   >
     <app-column
-      cdkDropList
       cdkDrag
       class="example-box"
       *ngFor="let column of service.columns"
@@ -16,6 +15,7 @@
       [currentTaskFromEdit]="currentTaskFromEdit"
       (curColumn)="sentData($event)"
       (currentTask)="sentTaskToEdit($event)"
+      [deleteTaskId]="deleteTaskId"
     ></app-column>
   </div>
   <mat-card class="column-add" (click)="this.service.isCreateColumn = true">
@@ -24,5 +24,12 @@
   </mat-card>
 </div>
 <app-create-column-form></app-create-column-form>
-<app-create-task-form (curTask)="sendTaskToColumn($event)" [curColumn]="curColumn"></app-create-task-form>
-<app-edit-task-form (editTaskFromEdit)="editTaskFromEdit($event)" [task]="currentTask"></app-edit-task-form>
+<app-create-task-form
+  (curTask)="sendTaskToColumn($event)"
+  [curColumn]="curColumn"
+></app-create-task-form>
+<app-edit-task-form
+  (editTaskFromEdit)="editTaskFromEdit($event)"
+  [task]="currentTask"
+></app-edit-task-form>
+<app-delete-form-task (deleteTaskId)="sentDeleteTaskId($event)"></app-delete-form-task>

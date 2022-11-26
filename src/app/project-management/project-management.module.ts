@@ -23,10 +23,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TaskComponent } from './components/task/task.component';
 import { CreateTaskFormComponent } from './components/task/create-task-form/create-task-form.component';
 import { EditTaskFormComponent } from './components/task/edit-task-form/edit-task-form.component';
-import { MatSelectModule } from "@angular/material/select";
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { HttpLoaderFactory, SharedModule } from '../shared/shared.module';
+import { MatSelectModule } from '@angular/material/select';
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
+import { DeleteFormTaskComponent } from './components/delete-form-task/delete-form-task.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -55,6 +56,7 @@ const routes: Routes = [
     CreateBoardFormComponent,
     EditBoardFormComponent,
     DeleteFormComponent,
+    DeleteFormTaskComponent,
     CreateColumnFormComponent,
     EditColumnFormComponent,
     TaskComponent,

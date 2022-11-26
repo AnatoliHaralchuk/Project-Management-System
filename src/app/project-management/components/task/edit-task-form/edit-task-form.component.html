@@ -1,9 +1,5 @@
 <div class="form-container" *ngIf="service.isEditTask">
-  <form
-    class="form-body"
-    [formGroup]="form"
-    (ngSubmit)="editTask(form)"
-  >
+  <form class="form-body" [formGroup]="form" (ngSubmit)="editTask(form)">
     <h2 class="form-title">Edit Task</h2>
 
     <mat-form-field class="title-field" appearance="fill">
@@ -33,8 +29,10 @@
 
     <mat-form-field appearance="fill">
       <mat-label>User</mat-label>
-      <mat-select formControlName = "user">
-        <mat-option *ngFor="let user of this.service.allUsers" [value]="user.login">{{user.login}}</mat-option>
+      <mat-select formControlName="user">
+        <mat-option *ngFor="let user of this.service.allUsers" [value]="user.login">{{
+          user.login
+        }}</mat-option>
       </mat-select>
       <mat-error *ngIf="form.get('user')?.touched && form.get('user')?.invalid">
         <small *ngIf="(form.get('user')?.errors)!['required']">Please choice a user</small>
