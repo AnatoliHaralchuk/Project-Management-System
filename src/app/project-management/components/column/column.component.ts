@@ -48,8 +48,9 @@ export class ColumnComponent implements OnInit, OnChanges {
       .pipe(
         mergeMap((params) => this.model.getAllTasks(params['id'], this.column.id!)),
         tap((tasks) => {
+          const t = tasks.sort((a,b) => a.order! - b.order!)
           if (!this.tasks.length) {
-            this.tasks = this.tasks.concat(tasks);
+            this.tasks = this.tasks.concat(t);
           }
         }),
       )
@@ -83,6 +84,19 @@ export class ColumnComponent implements OnInit, OnChanges {
   drop(event: CdkDragDrop<BoardTasks[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      for (let i = 0; i < event.container.data.length; i++) {
+        let task = event.container.data[i]
+        if (i + 1 !== task.order) {
+          this.model.updateTask(task.boardId!, task.columnId!,task.id!, {
+            title: task.title,
+            order: i + 1,
+            description: task.description,
+            userId: task.userId,
+            boardId: task.boardId,
+            columnId: task.columnId,
+          }).subscribe()
+        }
+      }
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -90,6 +104,32 @@ export class ColumnComponent implements OnInit, OnChanges {
         event.previousIndex,
         event.currentIndex,
       );
+      for (let i = 0; i < event.container.data.length; i++) {
+        let task = event.container.data[i]
+        if (i + 1 !== task.order) {
+          this.model.updateTask(task.boardId!, task.columnId!,task.id!, {
+            title: task.title,
+            order: i + 1,
+            description: task.description,
+            userId: task.userId,
+            boardId: task.boardId,
+            columnId: this.column.id,
+          }).subscribe()
+        }
+      }
+      for (let i = 0; i < event.previousContainer.data.length; i++) {
+        let task = event.previousContainer.data[i]
+        if (i + 1 !== task.order) {
+          this.model.updateTask(task.boardId!, task.columnId!,task.id!, {
+            title: task.title,
+            order: i + 1,
+            description: task.description,
+            userId: task.userId,
+            boardId: task.boardId,
+            columnId: task.columnId!,
+          }).subscribe()
+        }
+      }
     }
   }
 
@@ -117,11 +157,6 @@ export class ColumnComponent implements OnInit, OnChanges {
       if (!this.service.allUsers.length && users !== null)
         this.service.allUsers = this.service.allUsers.concat(users);
     });
-  }
-
-  deleteTask(event: string) {
-    const id: number = this.tasks.findIndex((task) => task.id === event);
-    this.tasks.splice(id, 1);
   }
 
   editTask(event: BoardTasks) {

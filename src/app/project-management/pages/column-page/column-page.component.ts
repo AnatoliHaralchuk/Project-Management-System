@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { ModelHttpService } from '../../model-http/model-http.service';
 import { CommonService } from '../../../core/services/common.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -22,6 +22,8 @@ export class ColumnPageComponent implements OnInit {
 
   deleteTaskId!: string;
 
+  boardId!:string;
+
   constructor(
     private model: ModelHttpService,
     public service: CommonService,
@@ -34,7 +36,8 @@ export class ColumnPageComponent implements OnInit {
         .pipe(
           mergeMap((params) => this.model.getAllColumns(params['id'])),
           tap((columns) => {
-            this.service.columns = this.service.columns.concat(columns);
+            const col = columns.sort((a,b) => a.order - b.order)
+            this.service.columns = this.service.columns.concat(col);
           }),
         )
         .subscribe();
@@ -43,6 +46,20 @@ export class ColumnPageComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.service.columns, event.previousIndex, event.currentIndex);
+    this.route.params
+      .pipe(
+        tap((params) => this.boardId = params['id']),
+      )
+      .subscribe()
+    for (let i = 0; i < this.service.columns.length; i++) {
+      let column = this.service.columns[i]
+      if (i + 1 !== column.order) {
+        this.model.updateColumn(this.boardId, column.id!, {
+          title: column.title,
+          order: i + 1
+        }).subscribe()
+      }
+    }
   }
 
   sentData(event: BoardColumns) {
