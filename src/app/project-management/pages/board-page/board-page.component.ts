@@ -11,7 +11,11 @@ import { DataService } from 'src/app/shared/services/data.service';
   styleUrls: ['./board-page.component.scss'],
 })
 export class BoardPageComponent implements OnInit {
-  constructor(private model: ModelHttpService, public service: CommonService, public data: DataService) {}
+  constructor(
+    private model: ModelHttpService,
+    public service: CommonService,
+    public data: DataService,
+  ) {}
 
   sub!: Subscription;
 

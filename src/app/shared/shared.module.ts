@@ -10,13 +10,14 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    FilterPipe
-  ],
+  declarations: [FilterPipe],
   imports: [
     CommonModule,
     HttpClientModule,
   ],
-  exports: [TranslateModule, FilterPipe],
+  exports: [
+    TranslateModule,
+    FilterPipe,
+  ],
 })
 export class SharedModule {}

@@ -3,10 +3,9 @@ import { Board } from 'src/app/project-management/models/management.models';
 
 @Pipe({
   name: 'filter',
-  pure: true
+  pure: true,
 })
 export class FilterPipe implements PipeTransform {
-
   transform(items: Board[], search: string = ''): Board[] {
     let cards: Board[];
     search = search.trim();
@@ -20,5 +19,4 @@ export class FilterPipe implements PipeTransform {
     // this.data.isItems = cards.length === 0 ? false : true;
     return cards;
   }
-
 }

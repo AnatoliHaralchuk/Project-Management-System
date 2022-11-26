@@ -1,13 +1,13 @@
 <div class="boards-container">
   <app-board
     (curBoard)="changeForm($event)"
-    *ngFor="let board of service.boards | filter:data.filterText; let idx = index"
+    *ngFor="let board of service.boards | filter: data.filterText; let idx = index"
     [board]="board"
     [id]="idx"
   ></app-board>
   <mat-card class="board-add" (click)="this.service.isCreateBoard = true">
     <mat-icon>add</mat-icon>
-    <mat-card-content> {{ "main.btn-add" | translate }} </mat-card-content>
+    <mat-card-content> {{ 'main.btn-add' | translate }} </mat-card-content>
   </mat-card>
 </div>
 <app-create-board-form></app-create-board-form>

@@ -22,7 +22,7 @@ export class ModelHttpService {
       catchError((err) => {
         switch (err.status) {
           case 403:
-            this.message = 'Введены неправильные данные!';
+            this.message = 'Неправильный логин или пароль!';
             break;
           default:
             this.message = 'Произошла ошибка, попробуйте снова.';
@@ -38,7 +38,7 @@ export class ModelHttpService {
       catchError((err) => {
         switch (err.status) {
           case 403:
-            this.message = 'Введены неправильные данные!';
+            this.message = 'Неправильный логин или пароль!';
             break;
           default:
             this.message = 'Произошла ошибка, попробуйте снова.';
@@ -54,7 +54,7 @@ export class ModelHttpService {
       catchError((err) => {
         switch (err.status) {
           case 403:
-            this.message = 'Введены неправильные данные!';
+            this.message = 'Неправильный логин или пароль!';
             break;
           default:
             this.message = 'Произошла ошибка, попробуйте снова.';
@@ -76,7 +76,7 @@ export class ModelHttpService {
         catchError((err) => {
           switch (err.status) {
             case 403:
-              this.message = 'Что-то пошло не так...';
+              this.message = 'Неправильный логин или пароль!';
               break;
             default:
               this.message = 'Произошла ошибка, попробуйте снова.';
@@ -133,7 +133,7 @@ export class ModelHttpService {
       catchError((err) => {
         switch (err.status) {
           case 403:
-            this.message = 'Введены неправильные данные!';
+            this.message = 'Неправильный логин или пароль!';
             break;
           default:
             this.message = 'Произошла ошибка, попробуйте снова.';
@@ -154,7 +154,7 @@ export class ModelHttpService {
         catchError((err) => {
           switch (err.status) {
             case 403:
-              this.message = 'Введены неправильные данные!';
+              this.message = 'Неправильный логин или пароль!';
               break;
             default:
               this.message = 'Произошла ошибка, попробуйте снова.';
@@ -170,7 +170,7 @@ export class ModelHttpService {
       catchError((err) => {
         switch (err.status) {
           case 403:
-            this.message = 'Введены неправильные данные!';
+            this.message = 'Неправильный логин или пароль!';
             break;
           default:
             this.message = 'Произошла ошибка, попробуйте снова.';
@@ -186,7 +186,7 @@ export class ModelHttpService {
       catchError((err) => {
         switch (err.status) {
           case 403:
-            this.message = 'Введены неправильные данные!';
+            this.message = 'Неправильный логин или пароль!';
             break;
           default:
             this.message = 'Произошла ошибка, попробуйте снова.';
@@ -207,7 +207,7 @@ export class ModelHttpService {
         catchError((err) => {
           switch (err.status) {
             case 403:
-              this.message = 'Что-то пошло не так...';
+              this.message = 'Неправильный логин или пароль!';
               break;
             default:
               this.message = 'Произошла ошибка, попробуйте снова.';
@@ -224,7 +224,7 @@ export class ModelHttpService {
       catchError((err) => {
         switch (err.status) {
           case 403:
-            this.message = 'Введены неправильные данные!';
+            this.message = 'Неправильный логин или пароль!';
             break;
           default:
             this.message = 'Произошла ошибка, попробуйте снова.';
@@ -244,7 +244,7 @@ export class ModelHttpService {
         catchError((err) => {
           switch (err.status) {
             case 403:
-              this.message = 'Введены неправильные данные!';
+              this.message = 'Неправильный логин или пароль!';
               break;
             default:
               this.message = 'Произошла ошибка, попробуйте снова.';
@@ -260,7 +260,7 @@ export class ModelHttpService {
       catchError((err) => {
         switch (err.status) {
           case 403:
-            this.message = 'Введены неправильные данные!';
+            this.message = 'Неправильный логин или пароль!';
             break;
           default:
             this.message = 'Произошла ошибка, попробуйте снова.';
@@ -276,7 +276,7 @@ export class ModelHttpService {
       catchError((err) => {
         switch (err.status) {
           case 403:
-            this.message = 'Введены неправильные данные!';
+            this.message = 'Неправильный логин или пароль!';
             break;
           default:
             this.message = 'Произошла ошибка, попробуйте снова.';
@@ -297,7 +297,7 @@ export class ModelHttpService {
         catchError((err) => {
           switch (err.status) {
             case 403:
-              this.message = 'Что-то пошло не так...';
+              this.message = 'Неправильный логин или пароль!';
               break;
             default:
               this.message = 'Произошла ошибка, попробуйте снова.';
@@ -316,7 +316,7 @@ export class ModelHttpService {
         catchError((err) => {
           switch (err.status) {
             case 403:
-              this.message = 'Введены неправильные данные!';
+              this.message = 'Неправильный логин или пароль!';
               break;
             default:
               this.message = 'Произошла ошибка, попробуйте снова.';
@@ -338,7 +338,7 @@ export class ModelHttpService {
         catchError((err) => {
           switch (err.status) {
             case 403:
-              this.message = 'Введены неправильные данные!';
+              this.message = 'Неправильный логин или пароль!';
               break;
             default:
               this.message = 'Произошла ошибка, попробуйте снова.';
@@ -356,7 +356,7 @@ export class ModelHttpService {
         catchError((err) => {
           switch (err.status) {
             case 403:
-              this.message = 'Введены неправильные данные!';
+              this.message = 'Неправильный логин или пароль!';
               break;
             default:
               this.message = 'Произошла ошибка, попробуйте снова.';
@@ -374,7 +374,7 @@ export class ModelHttpService {
         catchError((err) => {
           switch (err.status) {
             case 403:
-              this.message = 'Введены неправильные данные!';
+              this.message = 'Неправильный логин или пароль!';
               break;
             default:
               this.message = 'Произошла ошибка, попробуйте снова.';
@@ -404,7 +404,7 @@ export class ModelHttpService {
         catchError((err) => {
           switch (err.status) {
             case 403:
-              this.message = 'Что-то пошло не так...';
+              this.message = 'Неправильный логин или пароль!';
               break;
             default:
               this.message = 'Произошла ошибка, попробуйте снова.';
