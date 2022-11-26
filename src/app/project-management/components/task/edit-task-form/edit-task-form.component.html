@@ -1,0 +1,63 @@
+<div class="form-container" *ngIf="service.isEditTask">
+  <form class="form-body" [formGroup]="form" (ngSubmit)="editTask(form)">
+    <h2 class="form-title">Edit Task</h2>
+
+    <mat-form-field class="title-field" appearance="fill">
+      <mat-label>title</mat-label>
+      <input type="text" matInput formControlName="title" autocomplete="off" />
+      <mat-error *ngIf="form.get('title')?.touched && form.get('title')?.invalid">
+        <small *ngIf="(form.get('title')?.errors)!['required']">Please enter a title</small>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="description-field" appearance="fill">
+      <mat-label>description</mat-label>
+      <input matInput formControlName="description" autocomplete="off" />
+      <mat-error *ngIf="form.get('description')?.touched && form.get('description')?.invalid">
+        <small *ngIf="(form.get('description')?.errors)!['required']"
+          >Please enter a description</small
+        >
+        <small
+          *ngIf="
+            (form.get('description')?.errors)!['minlength'] &&
+            !(form.get('description')?.errors)!['required']
+          "
+          >Your password isn't strong enough: at least 10 characters</small
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>User</mat-label>
+      <mat-select formControlName="user">
+        <mat-option *ngFor="let user of this.service.allUsers" [value]="user.login">{{
+          user.login
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('user')?.touched && form.get('user')?.invalid">
+        <small *ngIf="(form.get('user')?.errors)!['required']">Please choice a user</small>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="btn-container">
+      <button
+        class="form-btn"
+        type="reset"
+        mat-stroked-button
+        color="primary"
+        (click)="service.isEditTask = false"
+      >
+        Cancel
+      </button>
+      <button
+        class="form-btn"
+        type="submit"
+        [disabled]="form.invalid"
+        mat-stroked-button
+        color="primary"
+      >
+        Edit
+      </button>
+    </div>
+  </form>
+</div>

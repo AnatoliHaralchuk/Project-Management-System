@@ -10,22 +10,22 @@ export class CaruselComponent implements OnInit {
 
   developers = [
     {
-      name: 'Anatoli Haralchuk',
-      about: 'Nothing comes easy, but if you work hard, the result is inevitable!',
+      name: 'carusel.name1',
+      about: 'carusel.about1',
       img: 'https://anatoliharalchuk.github.io/rsschool-cv/assets/img/myFoto.jpg',
-      subTitle: 'Teamlead, frontend developer',
+      subTitle: 'carusel.role1',
     },
     {
-      name: 'Dmitriy Kharitonov',
-      img: 'https://avatars.githubusercontent.com/u/77116742?v=4',
-      about: 'Dreams will come true. I will do everything for this!',
-      subTitle: 'Frontend developer',
+      name: 'carusel.name2',
+      img: 'https://i.ibb.co/zJqjPqq/IMG-20210330-004732-173.jpg',
+      about: 'carusel.about2',
+      subTitle: 'carusel.role2',
     },
     {
-      name: 'Tukhtamishev Sanjar',
+      name: 'carusel.name3',
       img: 'https://avatars.githubusercontent.com/u/94516310?s=400&u=1c4396ca5e6844c1e6e0f6c989d9d520c83cd45a&v=4',
-      subTitle: 'Frontend developer',
-      about: 'Trust the next chapter, because you are the author!',
+      about: 'carusel.about3',
+      subTitle: 'carusel.role3',
     },
   ];
 

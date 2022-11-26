@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModelHttpService } from './project-management/model-http/model-http.service';
+import { TranslateService } from '@ngx-translate/core';
+import { DataService } from './shared/services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,13 @@ import { ModelHttpService } from './project-management/model-http/model-http.ser
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private model: ModelHttpService) {}
-
-  ngOnInit(): void {
-    // this.model.getAllUsers().subscribe(res => console.log('users', res))
+  constructor(private data: DataService, private translateService: TranslateService) {
+    this.translateService.use(this.data.lang!);
   }
 
   title = 'Project-Management-System';
+
+  ngOnInit() {
+    this.translateService.use(this.data.lang!);
+  }
 }

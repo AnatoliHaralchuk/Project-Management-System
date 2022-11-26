@@ -1,7 +1,22 @@
-.main-wrapper{
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  justify-content: center;
-  height: 80vh;
+.main-wrapper {
+  padding: 1rem;
+  & .board-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    & h1 {
+      margin-bottom: 0;
+      margin-right: 2rem;
+    }
+
+    & .board-header__close {
+      //position: absolute;
+
+    }
+  }
+
+  //flex-direction: column;
+  //align-items:center;
+  //justify-content: center;
+  //height: 80vh;
 }

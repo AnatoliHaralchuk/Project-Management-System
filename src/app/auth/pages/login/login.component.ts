@@ -4,6 +4,7 @@ import { StrongPassValidator } from '../../strongpass.validator';
 import { ModelHttpService } from '../../../project-management/model-http/model-http.service';
 import { AuthService } from '../../services/auth.service';
 import { map, mergeMap, Subscription, tap } from 'rxjs';
+import { DataService } from '../../../../app/shared/services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,11 @@ export class LoginComponent implements OnInit {
 
   sub!: Subscription;
 
-  constructor(private model: ModelHttpService, private authService: AuthService) { }
+  constructor(
+    private model: ModelHttpService,
+    private authService: AuthService,
+    public data: DataService,
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -46,8 +51,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('user', JSON.stringify(user));
           Object.assign(this.authService.user, user);
         }),
-      ).subscribe()
+      )
+      .subscribe();
   }
-
 }
-

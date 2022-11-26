@@ -1,0 +1,20 @@
+<div class="form-container" *ngIf="service.isDeleteForm">
+  <div class="form-body">
+    <h2 class="form-title">Are you sure to delete</h2>
+
+    <div class="btn-container">
+      <button
+        class="form-btn"
+        type="reset"
+        mat-stroked-button
+        color="primary"
+        (click)="service.isDeleteForm = false"
+      >
+        Cancel
+      </button>
+      <button (click)="checkDelete()" class="form-btn" mat-stroked-button color="warn">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

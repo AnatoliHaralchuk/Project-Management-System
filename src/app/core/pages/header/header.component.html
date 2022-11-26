@@ -1,26 +1,75 @@
 <header class="header">
   <div class="header__container">
     <div class="header__langs">
-      <div class="header__langs-btn">Русский</div>
-      <div class="header__langs-btn">English</div>
-      <div class="header__langs-btn-short">Ру</div>
-      <div class="header__langs-btn-short">En</div>
+      <div
+        class="header__langs-btn"
+        (click)="data.setLanguage('ru')"
+        [class.active]="data.lang === 'ru'"
+      >
+        Русский
+      </div>
+      <div
+        class="header__langs-btn"
+        (click)="data.setLanguage('en')"
+        [class.active]="data.lang === 'en'"
+      >
+        English
+      </div>
+      <div
+        class="header__langs-btn"
+        (click)="data.setLanguage('it')"
+        [class.active]="data.lang === 'it'"
+      >
+        Italiano
+      </div>
+      <div
+        class="header__langs-btn-short"
+        (click)="data.setLanguage('ru')"
+        [class.active]="data.lang === 'ru'"
+      >
+        Ру
+      </div>
+      <div
+        class="header__langs-btn-short"
+        (click)="data.setLanguage('en')"
+        [class.active]="data.lang === 'en'"
+      >
+        En
+      </div>
+      <div
+        class="header__langs-btn-short"
+        (click)="data.setLanguage('it')"
+        [class.active]="data.lang === 'it'"
+      >
+        It
+      </div>
     </div>
     <div class="header__logo">
       <span class="header__logo-text">P</span>
-      <img class="header__logo-img" src="./../../../assets/img/pngegg.png" alt="cerberus" />
+      <img
+        [routerLink]="['']"
+        class="header__logo-img"
+        src="./../../../assets/img/pngegg.png"
+        alt="cerberus"
+      />
       <span class="header__logo-text">A</span>
     </div>
     <div class="header__auth" *ngIf="!authService.isToken; else logout">
-      <span class="header__auth-text" [routerLink]="['auth', 'login']">Вход</span>
+      <span class="header__auth-text" [routerLink]="['auth', 'login']">{{
+        'header.entrance' | translate
+      }}</span>
       <span class="header__auth-slash">|</span>
-      <span class="header__auth-text" [routerLink]="['auth', 'signup']">Регистрация</span>
+      <span class="header__auth-text" [routerLink]="['auth', 'signup']">{{
+        'header.registration' | translate
+      }}</span>
     </div>
     <ng-template #logout>
       <div class="header__auth">
         <span class="header__auth-text">{{ authService.user.name | titlecase }}</span>
         <span class="header__auth-slash">|</span>
-        <span class="header__auth-text" (click)="authService.logout()">Выход</span>
+        <span class="header__auth-text" (click)="authService.logout()">{{
+          'header.exit' | translate
+        }}</span>
       </div>
     </ng-template>
   </div>

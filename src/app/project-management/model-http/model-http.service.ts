@@ -10,17 +10,15 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class ModelHttpService {
-  constructor(
-    private http: HttpClient, 
-    private authService: AuthService,
-    private router: Router
-    ) {}
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {}
 
   message: string = '';
 
+  backend: string = 'https://dry-reaches-22710.herokuapp.com/';
+
   //START USERS//////////////////////////////////////////////
   getAllUsers(): Observable<Array<User> | null> {
-    return this.http.get<Array<User>>('users').pipe(
+    return this.http.get<Array<User>>(`${this.backend}users`).pipe(
       catchError((err) => {
         if (err.status === 404) console.log('что-то делаем если users не найден');
         return EMPTY;
@@ -29,7 +27,7 @@ export class ModelHttpService {
   }
 
   getUserById(id: string): Observable<User> | null {
-    return this.http.get<User>(`users/${id}`).pipe(
+    return this.http.get<User>(`${this.backend}users/${id}`).pipe(
       catchError((err) => {
         if (err.status === 404) console.log('что-то делаем если user не найден');
         return EMPTY;
@@ -38,7 +36,7 @@ export class ModelHttpService {
   }
 
   deleteUser(id: string): Observable<void> {
-    return this.http.delete<void>(`users/${id}`).pipe(
+    return this.http.delete<void>(`${this.backend}users/${id}`).pipe(
       catchError((err) => {
         if (err.status === 404) console.log('что-то делаем если user не найден');
         return EMPTY;
@@ -48,7 +46,7 @@ export class ModelHttpService {
 
   updateUser(id: string, user: User): Observable<User> | null {
     return this.http
-      .put<User>(`users/${id}`, {
+      .put<User>(`${this.backend}users/${id}`, {
         name: user.name,
         login: user.login,
         password: user.password,
@@ -63,10 +61,10 @@ export class ModelHttpService {
 
   //START Authorization//////////////////////////////////////////////
   loginCreateToken(login: Login): Observable<Token> {
-    return this.http.post<Token>('signin', { ...login }).pipe(
+    return this.http.post<Token>(`${this.backend}signin`, { ...login }).pipe(
       catchError((err) => {
-        switch(err.status) {
-          case (403): 
+        switch (err.status) {
+          case 403:
             this.message = 'Неправильный логин или пароль!';
             break;
           default:
@@ -80,7 +78,7 @@ export class ModelHttpService {
 
   signUpCreatAccount(user: User): Observable<User> {
     return this.http
-      .post<User>('signup', {
+      .post<User>(`${this.backend}signup`, {
         name: user.name,
         login: user.login,
         password: user.password,
@@ -96,7 +94,7 @@ export class ModelHttpService {
 
   // START BOARDS//////////////////////////////////////////////////
   getAllBoards(): Observable<Array<Board>> {
-    return this.http.get<Array<Board>>('boards').pipe(
+    return this.http.get<Array<Board>>(`${this.backend}boards`).pipe(
       catchError((err) => {
         if (err.status === 404) console.log('что-то делаем если boards не найден');
         return EMPTY;
@@ -106,7 +104,7 @@ export class ModelHttpService {
 
   createBoard(board: Board): Observable<Board> {
     return this.http
-      .post<Board>('boards', {
+      .post<Board>(`${this.backend}boards`, {
         title: board.title,
         description: board.description,
       })
@@ -119,7 +117,7 @@ export class ModelHttpService {
   }
 
   getBoardById(id: string): Observable<Board> {
-    return this.http.get<Board>(`boards/${id}`).pipe(
+    return this.http.get<Board>(`${this.backend}boards/${id}`).pipe(
       catchError((err) => {
         if (err.status === 404) console.log('что-то делаем если boards не найден');
         return EMPTY;
@@ -128,7 +126,7 @@ export class ModelHttpService {
   }
 
   deleteBoard(id: string): Observable<void> {
-    return this.http.delete<void>(`boards/${id}`).pipe(
+    return this.http.delete<void>(`${this.backend}boards/${id}`).pipe(
       catchError((err) => {
         if (err.status === 404) console.log('что-то делаем если boards не найден');
         return EMPTY;
@@ -138,7 +136,7 @@ export class ModelHttpService {
 
   updateBoard(id: string, board: Board): Observable<Board> {
     return this.http
-      .put<Board>(`boards/${id}`, {
+      .put<Board>(`${this.backend}boards/${id}`, {
         title: board.title,
         description: board.description,
       })
@@ -152,7 +150,7 @@ export class ModelHttpService {
 
   // START COLUMNS//////////////////////////////////////////////////
   getAllColumns(boardId: string): Observable<Array<BoardColumns>> {
-    return this.http.get<Array<BoardColumns>>(`boards/${boardId}/columns`).pipe(
+    return this.http.get<Array<BoardColumns>>(`${this.backend}boards/${boardId}/columns`).pipe(
       catchError((err) => {
         if (err.status === 404) console.log('что-то делаем если boards не найден');
         return EMPTY;
@@ -162,7 +160,7 @@ export class ModelHttpService {
 
   createColumn(boardId: string, title: string): Observable<BoardColumns> {
     return this.http
-      .post<BoardColumns>(`boards/${boardId}/columns`, {
+      .post<BoardColumns>(`${this.backend}boards/${boardId}/columns`, {
         title: title,
       })
       .pipe(
@@ -174,7 +172,7 @@ export class ModelHttpService {
   }
 
   getColumnById(boardId: string, columnId: string): Observable<BoardColumns> {
-    return this.http.get<BoardColumns>(`boards/${boardId}/columns/${columnId}`).pipe(
+    return this.http.get<BoardColumns>(`${this.backend}boards/${boardId}/columns/${columnId}`).pipe(
       catchError((err) => {
         if (err.status === 404) console.log('что-то делаем если boards не найден');
         return EMPTY;
@@ -183,7 +181,7 @@ export class ModelHttpService {
   }
 
   deleteColumn(boardId: string, columnId: string): Observable<void> {
-    return this.http.delete<void>(`boards/${boardId}/columns/${columnId}`).pipe(
+    return this.http.delete<void>(`${this.backend}boards/${boardId}/columns/${columnId}`).pipe(
       catchError((err) => {
         if (err.status === 404) console.log('что-то делаем если boards не найден');
         return EMPTY;
@@ -193,7 +191,7 @@ export class ModelHttpService {
 
   updateColumn(boardId: string, columnId: string, column: BoardColumns): Observable<BoardColumns> {
     return this.http
-      .put<BoardColumns>(`boards/${boardId}/columns/${columnId}`, {
+      .put<BoardColumns>(`${this.backend}boards/${boardId}/columns/${columnId}`, {
         title: column.title,
         order: column.order,
       })
@@ -207,17 +205,19 @@ export class ModelHttpService {
 
   // START TASKS//////////////////////////////////////////////////
   getAllTasks(boardId: string, columnId: string): Observable<Array<BoardTasks>> {
-    return this.http.get<Array<BoardTasks>>(`boards/${boardId}/columns/${columnId}/tasks`).pipe(
-      catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем');
-        return EMPTY;
-      }),
-    );
+    return this.http
+      .get<Array<BoardTasks>>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks`)
+      .pipe(
+        catchError((err) => {
+          if (err.status === 404) console.log('что-то делаем');
+          return EMPTY;
+        }),
+      );
   }
 
   createTask(boardId: string, columnId: string, task: Task): Observable<BoardTasks> {
     return this.http
-      .post<BoardTasks>(`boards/${boardId}/columns/${columnId}/tasks`, {
+      .post<BoardTasks>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks`, {
         title: task.title,
         description: task.description,
         userId: task.userId,
@@ -231,21 +231,25 @@ export class ModelHttpService {
   }
 
   getTaskById(boardId: string, columnId: string, taskId: string): Observable<BoardTasks> {
-    return this.http.get<BoardTasks>(`boards/${boardId}/columns/${columnId}/tasks/${taskId}`).pipe(
-      catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем в случае ошибки');
-        return EMPTY;
-      }),
-    );
+    return this.http
+      .get<BoardTasks>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks/${taskId}`)
+      .pipe(
+        catchError((err) => {
+          if (err.status === 404) console.log('что-то делаем в случае ошибки');
+          return EMPTY;
+        }),
+      );
   }
 
   deleteTask(boardId: string, columnId: string, taskId: string): Observable<void> {
-    return this.http.delete<void>(`boards/${boardId}/columns/${columnId}/tasks/${taskId}`).pipe(
-      catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем в случае ошибки');
-        return EMPTY;
-      }),
-    );
+    return this.http
+      .delete<void>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks/${taskId}`)
+      .pipe(
+        catchError((err) => {
+          if (err.status === 404) console.log('что-то делаем в случае ошибки');
+          return EMPTY;
+        }),
+      );
   }
 
   updateTask(
@@ -255,7 +259,7 @@ export class ModelHttpService {
     task: BoardTasks,
   ): Observable<BoardTasks> {
     return this.http
-      .put<BoardTasks>(`boards/${boardId}/columns/${columnId}/tasks/${taskId}`, {
+      .put<BoardTasks>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks/${taskId}`, {
         title: task.title,
         order: task.order,
         description: task.description,

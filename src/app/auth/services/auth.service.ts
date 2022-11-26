@@ -36,5 +36,6 @@ export class AuthService {
     localStorage.removeItem('user');
     this.isToken = false;
     this.router.navigate(['']);
+    localStorage.removeItem('lang');
   }
 }

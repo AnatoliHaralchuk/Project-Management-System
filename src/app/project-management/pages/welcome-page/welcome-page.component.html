@@ -1,16 +1,26 @@
 <section class="welcome-wrapper">
-  <h2 class="welcom-title">Welcome to <span>Project Management Application</span></h2>
+  <blockquote class="welcome__slogan">
+    <p>{{ 'welcome.slogan' | translate }}</p>
+    <footer>
+      — <cite>{{ 'welcome.author' | translate }}</cite>
+    </footer>
+  </blockquote>
+  <h2 class="welcom-title" [innerHTML]="'welcome.title' | translate"></h2>
   <h4>
-    Bring your teammates to optimize the work process, <br />
-    improve efficiency and bring your results to the new level!
+    {{ 'welcome.subtitle' | translate }}
   </h4>
-  <div class="login-block">
-    <mat-form-field class="name-inp" color="warn">
-      <mat-label class="label">Your name</mat-label>
-      <input matInput placeholder="Ex. Ivan..." />
-    </mat-form-field>
-    <button mat-stroked-button color="warn" [routerLink]="['/auth/signup']">
-      Sing-up for free
-    </button>
+  <p class="welcome__text" [innerHTML]="'welcome.text' | translate"></p>
+  <button class="welcome__btn" routerLink="/main/board">{{ 'welcome.btn' | translate }}</button>
+  <app-carusel></app-carusel>
+  <h3 class="welcome__info">{{ 'welcome.adv' | translate }}</h3>
+  <div class="info">
+    <div class="info__box">
+      <h4 class="info__box-title">{{ 'welcome.adv_title1' | translate }}</h4>
+      <p class="info__box-text">{{ 'welcome.adv_text1' | translate }}</p>
+    </div>
+    <div class="info__box">
+      <h4 class="info__box-title">{{ 'welcome.adv_title2' | translate }}</h4>
+      <p class="info__box-text">{{ 'welcome.adv_text2' | translate }}</p>
+    </div>
   </div>
 </section>

@@ -1,0 +1,36 @@
+<div class="example-container">
+  <h2 *ngIf="!isEditColumn; else edit" class="column-title" (click)="this.isEditColumn = true">
+    {{ column.title }}
+  </h2>
+  <ng-template #edit>
+    <app-edit-column-form (isEdit)="isEditColumn = false" [column]="column"></app-edit-column-form>
+  </ng-template>
+  <div
+    cdkDropList
+    [cdkDropListData]="tasks"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <app-task
+      class="example-box"
+      *ngFor="let task of tasks"
+      cdkDrag
+      [task]="task!"
+      (currentTask)="editTask($event)"
+    ></app-task>
+  </div>
+  <div class="btn-container">
+    <mat-card class="task-add" (click)="addTask(column)">
+      <mat-icon>add</mat-icon>
+      <mat-card-content> Добавить </mat-card-content>
+    </mat-card>
+    <button
+      (click)="isDeleteColumn(column.id!)"
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon style="color: #bf0909" class="delete-btn">delete</mat-icon>
+    </button>
+  </div>
+</div>

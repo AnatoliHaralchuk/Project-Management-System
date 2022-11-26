@@ -1,0 +1,34 @@
+@import 'src/assets/styles/constants';
+.boards-container {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  margin: 1rem;
+  @media(max-width: 850px) {
+    grid-template-columns: 33% 33% 33%;
+  }
+  @media(max-width: 650px) {
+    grid-template-columns: 50% 50%;
+  }
+  @media(max-width: 450px) {
+    grid-template-columns: 100%;
+  }
+  & .board-add {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: $gold;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.5rem;
+    transition: ease 0.3s;
+    cursor: pointer;
+    &:hover {
+      transform: scale(0.99);
+      border: 1px solid $gold;
+    }
+  }
+}
+
+

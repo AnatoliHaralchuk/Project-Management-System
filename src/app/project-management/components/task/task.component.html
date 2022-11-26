@@ -1,0 +1,27 @@
+<mat-card class="task-container">
+  <p class="task__title">{{ task.title }}</p>
+  <p class="task__text">{{ task.description }}</p>
+  <div class="task-btns">
+    <button
+      (click)="editTask(task)"
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon style="color: #3232eb">edit</mat-icon>
+    </button>
+
+    <div class="task-user">
+      {{ userName }}
+    </div>
+
+    <button
+      (click)="isDeleteTask(task.id!)"
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon style="color: #bf0909">delete</mat-icon>
+    </button>
+  </div>
+</mat-card>

@@ -11,7 +11,7 @@ $yellow: #ffff00;
 $red: #ff0000;
 $green: #008000;
 $shadow: #bdcada;
-$gold: #edc800;
+$gold: rgba(237, 200, 0, 0.18);
 $silver: #d8d8d8;
 $bronze: #d25645;
 
@@ -49,4 +49,11 @@ $bronze-shadow: inset 0 0 0 2px #bc7e6b, inset 0 1px 2px #ffffff80, inset 0 -1px
     color: $color;
     text-shadow: $white 0px 2px 2px;
     letter-spacing: +1px;
+}
+
+.link {
+    text-decoration: none;
+    cursor: pointer;
+    color: $bronze;
+    font-weight: 700;
 }

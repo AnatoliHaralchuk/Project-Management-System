@@ -1,7 +1,7 @@
 import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
@@ -9,6 +9,10 @@ import { ProjectManagementModule } from './project-management/project-management
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiUrlInterceptor } from './apiUrl.interceptor';
+import { CommonModule } from '@angular/common';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+import { HttpLoaderFactory } from './shared/shared.module';
 
 const INTERCEPTOR_ADDAPIURL: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -21,12 +25,23 @@ const INTERCEPTOR_ADDAPIURL: Provider = {
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
     AppRoutingModule,
     AuthModule,
     CoreModule,
     ProjectManagementModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
+  ],
+  exports: [
+    CommonModule,
+    TranslateModule,
   ],
   providers: [INTERCEPTOR_ADDAPIURL],
   bootstrap: [AppComponent],

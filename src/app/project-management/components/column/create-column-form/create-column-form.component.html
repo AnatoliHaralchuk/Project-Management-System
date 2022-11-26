@@ -1,0 +1,34 @@
+<div class="form-container" *ngIf="service.isCreateColumn">
+  <form class="form-body" [formGroup]="form" (ngSubmit)="createColumn(form)">
+    <h2 class="form-title">Create new column</h2>
+
+    <mat-form-field class="title-field" appearance="fill">
+      <mat-label>title</mat-label>
+      <input matInput formControlName="title" autocomplete="off" />
+      <mat-error *ngIf="form.get('title')?.touched && form.get('title')?.invalid">
+        <small *ngIf="(form.get('title')?.errors)!['required']">Please enter a title</small>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="btn-container">
+      <button
+        class="form-btn"
+        type="reset"
+        mat-stroked-button
+        color="primary"
+        (click)="service.isCreateColumn = false; form.reset()"
+      >
+        Cancel
+      </button>
+      <button
+        class="form-btn"
+        type="submit"
+        [disabled]="form.invalid"
+        mat-stroked-button
+        color="primary"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+</div>
