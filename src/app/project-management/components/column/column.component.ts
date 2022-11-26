@@ -51,10 +51,11 @@ export class ColumnComponent implements OnInit, OnChanges {
       if (this.curTask.columnId === this.column.id) this.tasks.push(this.curTask)
     }
     if (this.currentTaskFromEdit){
-      const id: number = this.tasks.findIndex((task) => task.id === this.curTask.id)
-      this.tasks[id].title = this.currentTaskFromEdit.title
-      this.tasks[id].description = this.currentTaskFromEdit.description
-      this.tasks[id].userId = this.currentTaskFromEdit.userId
+      const id: number = this.tasks.findIndex((task) => task.id === this.currentTaskFromEdit.id)
+      // console.log(this.tasks, id)
+      if (id !== -1) {
+        this.tasks.splice(id,1,this.currentTaskFromEdit)
+      }
     }
   }
 

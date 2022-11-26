@@ -48,12 +48,15 @@ export class EditTaskFormComponent implements OnInit, OnChanges {
   }
 
   editTask(form: FormGroup) {
+    this.service.isEditTask = false;
+    // @ts-ignore
+    const userId: string = this.service.allUsers.find((user) => user.login === form.value.user)!.id
     this.model
       .updateTask(this.task.boardId!, this.task.columnId!, this.task.id!, {
       title: form.value.title,
       order: 1,
       description: form.value.description,
-      userId: this.task.userId,
+      userId: userId,
       boardId: this.task.boardId!,
       columnId: this.task.columnId!
       })

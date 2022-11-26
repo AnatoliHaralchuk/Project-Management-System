@@ -1,5 +1,5 @@
 <div class="form-container">
-  <form class="form-body" [formGroup]="form" (ngSubmit)="editColumn(form.value)">
+  <form class="form-body" [formGroup]="form" (ngSubmit)="editColumn(form.value.title)">
     <mat-form-field class="title-field" appearance="fill">
       <mat-label>title</mat-label>
       <input type="text" matInput formControlName="title" autocomplete="off" />

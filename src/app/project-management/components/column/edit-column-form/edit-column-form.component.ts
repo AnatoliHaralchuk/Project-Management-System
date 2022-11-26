@@ -30,17 +30,17 @@ export class EditColumnFormComponent implements OnInit {
     });
   }
 
-  editColumn(obj: { title: string }) {
+  editColumn(title: string) {
     this.isEdit.emit(false);
     this.route.params
       .pipe(
         tap(() => {
           const id = this.service.columns.findIndex((column) => column.title === this.column.title);
-          this.service.columns[id].title = obj.title;
+          this.service.columns[id].title = title;
         }),
         mergeMap((params) =>
           this.model.updateColumn(params['id'], this.column.id!, {
-            title: obj.title,
+            title: title,
             order: this.column.order,
           }),
         ),

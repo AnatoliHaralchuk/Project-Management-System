@@ -44,7 +44,7 @@ const INTERCEPTOR_ADDAPIURL: Provider = {
     CommonModule,
     TranslateModule
   ],
-  // providers: [INTERCEPTOR_ADDAPIURL],
+  providers: [INTERCEPTOR_ADDAPIURL],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
