@@ -20,7 +20,14 @@ export class ModelHttpService {
   getAllUsers(): Observable<Array<User> | null> {
     return this.http.get<Array<User>>(`${this.backend}users`).pipe(
       catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем если users не найден');
+        switch (err.status) {
+          case 403:
+            this.message = 'Введены неправильные данные!';
+            break;
+          default:
+            this.message = 'Произошла ошибка, попробуйте снова.';
+        }
+        this.authService.message = this.message;
         return EMPTY;
       }),
     );
@@ -29,7 +36,14 @@ export class ModelHttpService {
   getUserById(id: string): Observable<User> | null {
     return this.http.get<User>(`${this.backend}users/${id}`).pipe(
       catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем если user не найден');
+        switch (err.status) {
+          case 403:
+            this.message = 'Введены неправильные данные!';
+            break;
+          default:
+            this.message = 'Произошла ошибка, попробуйте снова.';
+        }
+        this.authService.message = this.message;
         return EMPTY;
       }),
     );
@@ -38,7 +52,14 @@ export class ModelHttpService {
   deleteUser(id: string): Observable<void> {
     return this.http.delete<void>(`${this.backend}users/${id}`).pipe(
       catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем если user не найден');
+        switch (err.status) {
+          case 403:
+            this.message = 'Введены неправильные данные!';
+            break;
+          default:
+            this.message = 'Произошла ошибка, попробуйте снова.';
+        }
+        this.authService.message = this.message;
         return EMPTY;
       }),
     );
@@ -53,7 +74,14 @@ export class ModelHttpService {
       })
       .pipe(
         catchError((err) => {
-          if (err.status === 404) console.log('что-то делаем если user не найден');
+          switch (err.status) {
+            case 403:
+              this.message = 'Что-то пошло не так...';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
@@ -86,7 +114,14 @@ export class ModelHttpService {
       .pipe(
         catchError((err) => {
           this.authService.isLoading = false;
-          if (err.status) console.log('что-то делаем если user не найден');
+          switch (err.status) {
+            case 403:
+              this.message = 'Неправильный логин или пароль!';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
@@ -96,7 +131,14 @@ export class ModelHttpService {
   getAllBoards(): Observable<Array<Board>> {
     return this.http.get<Array<Board>>(`${this.backend}boards`).pipe(
       catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем если boards не найден');
+        switch (err.status) {
+          case 403:
+            this.message = 'Введены неправильные данные!';
+            break;
+          default:
+            this.message = 'Произошла ошибка, попробуйте снова.';
+        }
+        this.authService.message = this.message;
         return EMPTY;
       }),
     );
@@ -110,7 +152,14 @@ export class ModelHttpService {
       })
       .pipe(
         catchError((err) => {
-          if (err.status === 404) console.log('что-то делаем если boards не найден');
+          switch (err.status) {
+            case 403:
+              this.message = 'Введены неправильные данные!';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
@@ -119,7 +168,14 @@ export class ModelHttpService {
   getBoardById(id: string): Observable<Board> {
     return this.http.get<Board>(`${this.backend}boards/${id}`).pipe(
       catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем если boards не найден');
+        switch (err.status) {
+          case 403:
+            this.message = 'Введены неправильные данные!';
+            break;
+          default:
+            this.message = 'Произошла ошибка, попробуйте снова.';
+        }
+        this.authService.message = this.message;
         return EMPTY;
       }),
     );
@@ -128,7 +184,14 @@ export class ModelHttpService {
   deleteBoard(id: string): Observable<void> {
     return this.http.delete<void>(`${this.backend}boards/${id}`).pipe(
       catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем если boards не найден');
+        switch (err.status) {
+          case 403:
+            this.message = 'Введены неправильные данные!';
+            break;
+          default:
+            this.message = 'Произошла ошибка, попробуйте снова.';
+        }
+        this.authService.message = this.message;
         return EMPTY;
       }),
     );
@@ -142,7 +205,14 @@ export class ModelHttpService {
       })
       .pipe(
         catchError((err) => {
-          if (err.status === 404) console.log('что-то делаем если boards не найден');
+          switch (err.status) {
+            case 403:
+              this.message = 'Что-то пошло не так...';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
@@ -152,7 +222,14 @@ export class ModelHttpService {
   getAllColumns(boardId: string): Observable<Array<BoardColumns>> {
     return this.http.get<Array<BoardColumns>>(`${this.backend}boards/${boardId}/columns`).pipe(
       catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем если boards не найден');
+        switch (err.status) {
+          case 403:
+            this.message = 'Введены неправильные данные!';
+            break;
+          default:
+            this.message = 'Произошла ошибка, попробуйте снова.';
+        }
+        this.authService.message = this.message;
         return EMPTY;
       }),
     );
@@ -165,7 +242,14 @@ export class ModelHttpService {
       })
       .pipe(
         catchError((err) => {
-          if (err.status === 404) console.log('что-то делаем если boards не найден');
+          switch (err.status) {
+            case 403:
+              this.message = 'Введены неправильные данные!';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
@@ -174,7 +258,14 @@ export class ModelHttpService {
   getColumnById(boardId: string, columnId: string): Observable<BoardColumns> {
     return this.http.get<BoardColumns>(`${this.backend}boards/${boardId}/columns/${columnId}`).pipe(
       catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем если boards не найден');
+        switch (err.status) {
+          case 403:
+            this.message = 'Введены неправильные данные!';
+            break;
+          default:
+            this.message = 'Произошла ошибка, попробуйте снова.';
+        }
+        this.authService.message = this.message;
         return EMPTY;
       }),
     );
@@ -183,7 +274,14 @@ export class ModelHttpService {
   deleteColumn(boardId: string, columnId: string): Observable<void> {
     return this.http.delete<void>(`${this.backend}boards/${boardId}/columns/${columnId}`).pipe(
       catchError((err) => {
-        if (err.status === 404) console.log('что-то делаем если boards не найден');
+        switch (err.status) {
+          case 403:
+            this.message = 'Введены неправильные данные!';
+            break;
+          default:
+            this.message = 'Произошла ошибка, попробуйте снова.';
+        }
+        this.authService.message = this.message;
         return EMPTY;
       }),
     );
@@ -197,7 +295,14 @@ export class ModelHttpService {
       })
       .pipe(
         catchError((err) => {
-          if (err.status === 404) console.log('что-то делаем если boards не найден');
+          switch (err.status) {
+            case 403:
+              this.message = 'Что-то пошло не так...';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
@@ -209,7 +314,14 @@ export class ModelHttpService {
       .get<Array<BoardTasks>>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks`)
       .pipe(
         catchError((err) => {
-          if (err.status === 404) console.log('что-то делаем');
+          switch (err.status) {
+            case 403:
+              this.message = 'Введены неправильные данные!';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
@@ -224,7 +336,14 @@ export class ModelHttpService {
       })
       .pipe(
         catchError((err) => {
-          if (err.status === 404) console.log('что-то делаем в случае ошибки');
+          switch (err.status) {
+            case 403:
+              this.message = 'Введены неправильные данные!';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
@@ -235,7 +354,14 @@ export class ModelHttpService {
       .get<BoardTasks>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks/${taskId}`)
       .pipe(
         catchError((err) => {
-          if (err.status === 404) console.log('что-то делаем в случае ошибки');
+          switch (err.status) {
+            case 403:
+              this.message = 'Введены неправильные данные!';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
@@ -246,7 +372,14 @@ export class ModelHttpService {
       .delete<void>(`${this.backend}boards/${boardId}/columns/${columnId}/tasks/${taskId}`)
       .pipe(
         catchError((err) => {
-          if (err.status === 404) console.log('что-то делаем в случае ошибки');
+          switch (err.status) {
+            case 403:
+              this.message = 'Введены неправильные данные!';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
@@ -269,7 +402,14 @@ export class ModelHttpService {
       })
       .pipe(
         catchError((err) => {
-          if (err.status === 404) console.log('что-то делаем если boards не найден');
+          switch (err.status) {
+            case 403:
+              this.message = 'Что-то пошло не так...';
+              break;
+            default:
+              this.message = 'Произошла ошибка, попробуйте снова.';
+          }
+          this.authService.message = this.message;
           return EMPTY;
         }),
       );
