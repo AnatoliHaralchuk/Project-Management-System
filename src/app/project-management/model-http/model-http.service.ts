@@ -294,15 +294,7 @@ export class ModelHttpService {
         order: column.order,
       })
       .pipe(
-        catchError((err) => {
-          switch (err.status) {
-            case 403:
-              this.message = 'Неправильный логин или пароль!';
-              break;
-            default:
-              this.message = 'Произошла ошибка, попробуйте снова.';
-          }
-          this.authService.message = this.message;
+        catchError(() => {
           return EMPTY;
         }),
       );
@@ -401,15 +393,7 @@ export class ModelHttpService {
         columnId: task.columnId,
       })
       .pipe(
-        catchError((err) => {
-          switch (err.status) {
-            case 403:
-              this.message = 'Неправильный логин или пароль!';
-              break;
-            default:
-              this.message = 'Произошла ошибка, попробуйте снова.';
-          }
-          this.authService.message = this.message;
+        catchError(() => {
           return EMPTY;
         }),
       );
