@@ -4,21 +4,21 @@
 
     <mat-form-field class="example-full-width">
       <mat-label style="font-size: 1.5rem">{{ 'main.name' | translate }}</mat-label>
-      <input
-        #Iboard
-        style="font-size: 1.5rem"
-        matInput
-        placeholder=""
-        value=""
-        [(ngModel)]="data.filterText"
-      />
+      <input #Iboard style="font-size: 1.5rem" matInput placeholder="" value="" [(ngModel)]="data.filterText" />
     </mat-form-field>
 
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon (click)="Iboard.value = ''">close</mat-icon>
     </button>
   </div>
+
+  <div class="board-header" *ngIf="router.url !== '/main/board'">
+    <button class="back-btn" (click)="back()">Назад</button>
+  </div>
+
 </div>
+
+
 <hr />
 
 <router-outlet></router-outlet>

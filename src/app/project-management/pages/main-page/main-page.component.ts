@@ -10,5 +10,9 @@ import { DataService } from '../../../shared/services/data.service';
 export class MainPageComponent implements OnInit {
   constructor(public data: DataService, public router: Router) {}
 
+  back() {
+    window.history.back();
+  }
+
   ngOnInit(): void {}
 }
