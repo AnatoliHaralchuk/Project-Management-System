@@ -1,0 +1,84 @@
+{
+    "header": {
+        "exit": "Uscita",
+        "entrance": "Ingresso",
+        "registration": "Deposito"
+    },
+    "welcome": {
+        "slogan": "Se vuoi far ridere Dio, parlagli dei tuoi piani",
+        "author": "Il nostro motto",
+        "title": "Benvenuto in <span>La tua Utilità di pianificazione!</span>",
+        "subtitle": "Pianificheremo la tua vita in modo che tu non abbia il tempo di morire",
+        "text": "Stai fallendo in qualcosa? Tutto sta sfuggendo di mano? Il ritmo frenetico della vita cittadina sta letteralmente rovinando i tuoi piani? Vi presentiamo PMA! PMA è uno sviluppo unico e innovativo sviluppato da sviluppatori di diversi paesi. Questa applicazione si basa su una semplice idea: pianificare un flusso di lavoro con <a class='link' target='_blank' href='https://letmegooglethat.com/?q=%D0%9E%D1%85+%D1%83%D0%B6+%D1%8D%D1%82%D0%B8+%D1%81%D0%BA%D0%B0%D0%B7%D0%BE%D1%87%D0%BA%D0%B8%2C+%D0%BE%D1%85+%D1%83%D0%B6+%D1%8D%D1%82%D0%B8+%D1%81%D0%BA%D0%B0%D0%B7%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B8'>PMA fast quality free</a>. Per raggiungere questo obiettivo, nel cuore di questa piattaforma è stata introdotta una moderna strategia organizzativa, Kanban, che è riuscita a far innamorare miliardi di cittadini del nostro Paese. Non devi più soffrire della tua stessa disorganizzazione e disordine. Ricercato <a class='link' target='_blank' href='https://www.aviasales.uz/map?_openstat=ZGlyZWN0LnlhbmRleC5ydTs2ODU0NzAyNTsxMTQ4NjAwNTQwNzt5YW5kZXgucnU6cHJlbWl1bQ&device=desktop&geo=%D0%A2%D01%B05 %D0%A2%D0%B05%&paramsDnetwork=382%&paramsDnetwork MOWANYWHERE1&placement=none&position=premium.1&term_match_type=syn&term_matched=&utm_adgroup_id=4766405973&utm_campaign=uz_tashkent_brand_search&utm_campaign_id=68547025&utm_content_id=11486005407&utm_medium=cpc&utm_source=yd&utm_term=aviasales&utm_term_id=35296737366&yclid=6793748717739966463'>acquista un biglietto per Airsales a Mosca a buon mercatop</a> ? Inserisci questo compito nella tabella e divertiti!",
+        "btn": "Tentativo",
+        "adv": "Perché lo siamo",
+        "adv_title1": "Approccio polimorfico",
+        "adv_text1": "Il nostro team amichevole è composto da persone provenienti da diversi paesi. Ognuno di noi ha la propria visione del processo di pianificazione, basata sulle caratteristiche della propria cultura. Prima di unirci, e per unirci, ci siamo prima fortemente e definitivamente disimpegnati. Il risultato è davanti a te.",
+        "adv_title2": "Prodotto completamente gratuito",
+        "adv_text2": "Lavorare gratis è la nostra cosa. Da quasi un anno lavoriamo in questa modalità. Durante questo periodo, abbiamo prodotto molti prodotti software diversi e non abbiamo ricevuto un centesimo per nessuno di essi. Questa applicazione non fa eccezione. E, francamente, lo adoriamo."
+    },
+    "carusel": {
+        "team": "Fondatori dell'AMP",
+        "pointer": "Eccoli, da sinistra a destra:",
+        "name1": "Anatolio Horalcucco",
+        "name2": "Dimitri Anderi",
+        "name3": "Sanjarello Tukhtammello",
+        "about1": "Pianificava sempre la vita e lei distruggeva sempre metodicamente i suoi piani.",
+        "about2": "Una volta aveva intenzione di diventare un bravo ragazzo, ma è diventato solo un vecchio.",
+        "about3": "Una volta aveva pianificato di completare questo progetto, ma ha rinunciato prima di iniziare.",
+        "role1": "Duce frontend",
+        "role2": "Maestro di frontend",
+        "role3": "Esperto di frontend"
+    },
+    "login": {
+        "title": "Ingresso",
+        "login": "Accedere",
+        "pass": "Parola d'ordine",
+        "req-login": "Inserisci il login",
+        "req-pass": "Per favore inserire una password",
+        "min-pass": "La password deve contenere almeno 8 caratteri",
+        "multi-pass": "La password deve contenere lettere maiuscole e minuscole",
+        "num-pass": "La password deve contenere numeri",
+        "spec-pass": "La password deve contenere caratteri speciali: ! @ # ?",
+        "btn": "Entrare"
+    },
+    "signup": {
+        "title": "Registrati",
+        "login": "Accedere",
+        "name": "Nome",
+        "req-name": "Per favore inserisci il tuo nome",
+        "pass": "Parola d'ordine",
+        "req-login": "Inserisci il login",
+        "req-pass": "Per favore inserire una password",
+        "min-pass": "La password deve contenere almeno 8 caratteri",
+        "multi-pass": "La password deve contenere lettere maiuscole e minuscole",
+        "num-pass": "La password deve contenere numeri",
+        "spec-pass": "La password deve contenere caratteri speciali: ! @ # ?",
+        "confirm": "Conferma password",
+        "not": "Le passwords non corrispondono",
+        "btn": "Registrati"
+    },
+    "main": {
+        "boards": "bordo",
+        "name": "Nome del consiglio",
+        "btn-add": "Aggiungere"
+    },
+    "board": {
+        "create": "Crea nuova scheda",
+        "task": "Crea nuova attività",
+        "edit": "Modifica lavagna",
+        "column": "Crea nuova colonna",
+        "delete": "Sei sicuro di cancellare?",
+        "title": "Inserisci un titolo",
+        "desc": "Inserisci una descrizione",
+        "desc-min": "La tua descrizione non è abbastanza forte: almeno 10 caratteri",
+        "create-btn": "Creare",
+        "cancel-btn": "Annullare",
+        "title-name": "Titolo",
+        "desc-name": "Descrizione",
+        "delete-btn": "Eliminare",
+        "edit-btn": "Modifica",
+        "user-name": "Utente",
+        "user": "Si prega di scegliere un utente"
+      }
+}
