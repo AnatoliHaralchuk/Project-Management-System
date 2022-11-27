@@ -79,6 +79,7 @@
     "delete-btn": "Delete",
     "edit-btn": "Edit",
     "user-name": "User",
-    "user": "Please choice a user"
+    "user": "Please choice a user",
+    "back-btn": "Back"
   }
 }

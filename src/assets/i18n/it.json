@@ -79,6 +79,7 @@
         "delete-btn": "Eliminare",
         "edit-btn": "Modifica",
         "user-name": "Utente",
-        "user": "Si prega di scegliere un utente"
+        "user": "Si prega di scegliere un utente",
+        "back-btn": "Fa"
       }
 }
