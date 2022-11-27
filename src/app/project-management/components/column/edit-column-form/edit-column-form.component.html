@@ -1,0 +1,34 @@
+<div class="form-container">
+  <form class="form-body" [formGroup]="form" (ngSubmit)="editColumn(form.value.title)">
+    <mat-form-field class="title-field" appearance="fill">
+      <mat-label>{{ 'board.title-name' | translate }}</mat-label>
+      <input type="text" matInput formControlName="title" autocomplete="off" />
+      <mat-error *ngIf="form.get('title')?.touched && form.get('title')?.invalid">
+        <small *ngIf="(form.get('title')?.errors)!['required']">{{
+          'board.title' | translate
+        }}</small>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="btn-container">
+      <button
+        class="form-btn"
+        type="reset"
+        mat-stroked-button
+        color="primary"
+        (click)="isEdit.emit(false)"
+      >
+        {{ 'board.cancel-btn' | translate }}
+      </button>
+      <button
+        class="form-btn"
+        type="submit"
+        [disabled]="form.invalid"
+        mat-stroked-button
+        color="primary"
+      >
+        {{ 'board.edit-btn' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

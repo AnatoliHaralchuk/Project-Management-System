@@ -1,0 +1,61 @@
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Board } from '../../models/management.models';
+import { ModelHttpService } from '../../model-http/model-http.service';
+import { CommonService } from '../../../core/services/common.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { tap } from 'rxjs';
+
+@Component({
+  selector: 'app-board',
+  templateUrl: './board.component.html',
+  styleUrls: ['./board.component.scss'],
+})
+export class BoardComponent implements OnInit {
+  @Input() board!: Board;
+
+  @Input() id!: number;
+
+  @Output() curBoard: EventEmitter<Board> = new EventEmitter<Board>();
+
+  constructor(
+    private model: ModelHttpService,
+    public service: CommonService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
+
+  ngOnInit(): void {}
+
+  isDeleteBoard(id: string) {
+    this.service.isDeleteForm = true;
+    this.service.deleteData = {
+      idBoard: id,
+      idColumn: '',
+      idTask: '',
+      idUser: '',
+    };
+  }
+
+  editBoard(board: Board) {
+    this.service.isEditBoard = true;
+    this.curBoard.emit(board);
+    this.service.currentBoard = board;
+  }
+
+  toBoard(event: any, board: Board) {
+    if (!(event.target.tagName === 'MAT-ICON')) {
+      this.route.params
+        .pipe(
+          tap((params) => {
+            this.service.curBoardId = params['id'];
+            this.router.navigate([
+              '/main/board',
+              board.id,
+              'column',
+            ]);
+          }),
+        )
+        .subscribe();
+    }
+  }
+}

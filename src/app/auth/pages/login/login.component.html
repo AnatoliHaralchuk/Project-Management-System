@@ -1,0 +1,69 @@
+<div class="login-container">
+  <form class="login-body" [formGroup]="form" (ngSubmit)="createToken(form)">
+    <h2 class="login-title">{{ 'login.title' | translate }}</h2>
+    <mat-form-field class="login-field" appearance="fill">
+      <mat-label>{{ 'login.login' | translate }}</mat-label>
+      <input matInput formControlName="login" autocomplete="off" />
+      <mat-error *ngIf="form.get('login')?.touched && form.get('login')?.invalid">
+        <small *ngIf="(form.get('login')?.errors)!['required']">{{
+          'login.req-login' | translate
+        }}</small>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="password-field" appearance="fill">
+      <mat-label>{{ 'login.pass' | translate }}</mat-label>
+      <input
+        readonly
+        onfocus="removeAttribute('readonly')"
+        matInput
+        formControlName="password"
+        [type]="hidePass ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hidePass = !hidePass"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidePass"
+      >
+        <mat-icon>{{ hidePass ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+        <small *ngIf="(form.get('password')?.errors)!['required']">{{
+          'login.req-pass' | translate
+        }}</small>
+        <small
+          *ngIf="
+            (form.get('password')?.errors)!['minlength'] &&
+            !(form.get('password')?.errors)!['required']
+          "
+          >{{ 'login.min-pass' | translate }}</small
+        >
+        <small
+          *ngIf="
+            (form.get('password')?.errors)!['mixtureCase'] &&
+            !(form.get('password')?.errors)!['required']
+          "
+          >{{ 'login.multi-pass' | translate }}</small
+        >
+        <small *ngIf="(form.get('password')?.errors)!['mixtureNum']">{{
+          'login.num-pass' | translate
+        }}</small>
+        <small *ngIf="(form.get('password')?.errors)!['inclusionSymbol']">{{
+          'login.spec-pass' | translate
+        }}</small>
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      class="login-btn"
+      type="submit"
+      [disabled]="form.invalid"
+      mat-stroked-button
+      color="primary"
+    >
+      {{ 'login.btn' | translate }}
+    </button>
+  </form>
+</div>

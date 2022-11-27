@@ -1,0 +1,11 @@
+<app-header></app-header>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>
+<div class="shadow" *ngIf="auth.message">
+  <div class="shadow__window">
+    {{ auth.message }}
+    <div class="shadow__window-close" (click)="close()"></div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+@import './../../../../assets/styles/constants.scss';
+
+.main-wrapper {
+  padding: 1rem;
+  & .board-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    & h1 {
+      margin-bottom: 0;
+      margin-right: 2rem;
+    }
+  }
+
+  //flex-direction: column;
+  //align-items:center;
+  //justify-content: center;
+  //height: 80vh;
+}
+
+
+.back-btn {
+  @include btn (150px);
+  background: $gold-back;
+  transition: all .3s ease;
+  &:hover {
+    box-shadow: $bronze-shadow;
+  }
+}
