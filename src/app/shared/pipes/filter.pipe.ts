@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Board } from 'src/app/project-management/models/management.models';
+import { Board } from '../../project-management/models/management.models';
 
 @Pipe({
   name: 'filter',

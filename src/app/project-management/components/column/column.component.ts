@@ -106,9 +106,10 @@ export class ColumnComponent implements OnInit, OnChanges {
         event.previousIndex,
         event.currentIndex,
       );
+
       for (let i = 0; i < event.container.data.length; i++) {
         let task = event.container.data[i];
-        if (i + 1 !== task.order) {
+        if (i + 1 !== task.order || task.columnId !== this.column.id) {
           this.model
             .updateTask(task.boardId!, task.columnId!, task.id!, {
               title: task.title,
@@ -123,7 +124,7 @@ export class ColumnComponent implements OnInit, OnChanges {
       }
       for (let i = 0; i < event.previousContainer.data.length; i++) {
         let task = event.previousContainer.data[i];
-        if (i + 1 !== task.order) {
+        if (i + 1 !== task.order || task.columnId !== this.column.id) {
           this.model
             .updateTask(task.boardId!, task.columnId!, task.id!, {
               title: task.title,
